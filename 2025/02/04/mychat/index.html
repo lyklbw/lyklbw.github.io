@@ -259,24 +259,27 @@
             
               <div class="markdown-body">
                 
-                <h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><blockquote>
+                <h2 id="搭建步骤">搭建步骤</h2>
+<blockquote>
 <p>简易流程，只是作为记录</p>
 </blockquote>
-<h3 id="获取API"><a href="#获取API" class="headerlink" title="获取API"></a>获取API</h3><blockquote>
-<p>使用智增增平台获得 api_keys 以及 base_url<br>模型选择4o 更加经济</p>
+<h3 id="获取api">获取API</h3>
+<blockquote>
+<p>使用智增增平台获得 api_keys 以及 base_url 模型选择4o 更加经济</p>
+<p>具体网址： https://gpt.zhizengzeng.com/</p>
 </blockquote>
-<p>具体网址：<br><a target="_blank" rel="noopener" href="https://gpt.zhizengzeng.com/">https://gpt.zhizengzeng.com/</a></p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><blockquote>
+<h3 id="部署">部署</h3>
+<blockquote>
 <p>使用vercel将nextchat部署在网页</p>
 </blockquote>
-<ol>
+<ol type="1">
 <li>安装vercel</li>
 <li>部署github respository的项目（fork以方便更新）</li>
 <li>配置环境变量</li>
 <li>deployment</li>
 <li>enjoy</li>
 </ol>
-<p>链接<br><a target="_blank" rel="noopener" href="https://chat-lbw.vercel.app/">https://chat-lbw.vercel.app/</a></p>
+<p>链接 https://chat-lbw.vercel.app/</p>
 <p>之后可以改成自己的域名。但是自己目前没有需求，所以就不改了。</p>
 
                 
@@ -368,6 +371,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/02/15/ADMM/" title="ADMM">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ADMM</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -430,6 +439,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -596,6 +611,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
 
 

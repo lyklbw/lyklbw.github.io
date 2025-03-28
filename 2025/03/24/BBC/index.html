@@ -19,22 +19,22 @@
   <meta name="author" content="lyklbw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数字图像处理的知识点和笔记整理">
+    <meta name="description" content="大三老登第一次参加蓝桥杯的知识点总结和笔记整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DIP">
-<meta property="og:url" content="http://lyklbw.github.io/2025/03/12/DIP/index.html">
+<meta property="og:title" content="BBC">
+<meta property="og:url" content="http://lyklbw.github.io/2025/03/24/BBC/index.html">
 <meta property="og:site_name" content="lyklbw&#39;s blog">
-<meta property="og:description" content="数字图像处理的知识点和笔记整理">
+<meta property="og:description" content="大三老登第一次参加蓝桥杯的知识点总结和笔记整理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-12T06:20:17.000Z">
-<meta property="article:modified_time" content="2025-03-12T06:31:43.946Z">
+<meta property="article:published_time" content="2025-03-24T02:46:37.000Z">
+<meta property="article:modified_time" content="2025-03-28T11:30:24.105Z">
 <meta property="article:author" content="lyklbw">
-<meta property="article:tag" content="Class Notes">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DIP - lyklbw&#39;s blog</title>
+  <title>BBC - lyklbw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -181,7 +181,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DIP"></span>
+            <span id="subtitle" data-typed-text="BBC"></span>
           
         </div>
 
@@ -192,8 +192,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-12 14:20" pubdate>
-          2025年3月12日 下午
+        <time datetime="2025-03-24 10:46" pubdate>
+          2025年3月24日 上午
         </time>
       </span>
     
@@ -204,7 +204,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9 字
+          905 字
         
       </span>
     
@@ -215,7 +215,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -252,13 +252,138 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DIP</h1>
+            <h1 id="seo-header">BBC</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="数字图像处理">数字图像处理</h2>
-<h3 id="第一章">第一章</h3>
+                <h3 id="蓝桥杯知识点与算法简介">蓝桥杯知识点与算法简介</h3>
+<blockquote>
+<p>纯属小白
+望各位ACM，OI大佬不要嘲笑,以下是这半个月的学习安排和计划，重中之重的方法在于搜索和回溯的应用，搜索包括DFS、BFS，更难一点的就是DFS记忆化搜索，至于回溯最好去了解一下八皇后问题，这样可以对于回溯了解的更加深刻</p>
+</blockquote>
+<p>1.贪心算法</p>
+<p>2.动态规划</p>
+<p>3.递推递归</p>
+<p>4.搜索</p>
+<p>5.分治算法</p>
+<p>6.枚举算法</p>
+<p>7.BFS算法</p>
+<p>8.DFS算法</p>
+<p>9.其他题型积累</p>
+<h4 id="贪心算法">1.贪心算法</h4>
+<ol type="1">
+<li>基本思想</li>
+</ol>
+<p>1）贪婪算法（贪心算法）是指在对问题进行求解时，在每一步选择中都采取最好或者最优（即最有利）的选择，从而希望能够导致结果是最好或者最优的算法。</p>
+<p>2）贪婪算法所得到的结果不一定是最优的结果（有时候会是最优解），但是都是相对近似（接近）最优解的结果。</p>
+<ol start="2" type="1">
+<li>局限性</li>
+</ol>
+<p>贪心算法失效的很大一个原因在于它明显的局限性：它几乎只考虑局部最优解。
+所谓局部最优，就是只考虑当前的最大利益，既不向前多看一步，也不向后多看一步，导致每次都只用当前阶段的最优解。
+因此在绝大多数情况下，贪心算法不能得到整体最优解，但它的解是最优解的一个很好近似。</p>
+<ol start="3" type="1">
+<li>练习题</li>
+</ol>
+<ul>
+<li><p>3.1 最大比例： <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/120/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2016蓝桥杯省赛贪心算法题目</a>
+利用vector的erase和unique去重，然后使用贪心找到最小的公倍数之比</p></li>
+<li><p>3.2 付账问题： <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/174/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2018蓝桥杯省赛贪心算法题目</a>
+非常典型的贪心，每一次都是取当前情况的最优解 题目要求输出n位小数：
+iomanip
+cout&lt;&lt;fixed&lt;&lt;setprecision(n)&lt;&lt;&gt;&gt;&gt;&gt;</p></li>
+<li><p>3.3 日志统计 双指针 贪心 <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/179/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2018蓝桥杯省赛贪心算法题目</a>
+学习了map的使用，key为int，value为vector <int> 注意空格 end不存储数据
+使用引用避免大量空间占用 使用迭代器依次访问
+还是得用iterator，因为key的值并不连续 iter双指针 iter-&gt;first
+iter-&gt;second 分别控制key和value（vector）</p></li>
+</ul>
+<h4 id="其他题型积累">9.其他题型积累</h4>
+<ol start="0" type="1">
+<li>基本知识点</li>
+</ol>
+<ul>
+<li>排序算法 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span> <span class="hljs-comment">// 包含 std::sort</span></span><br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">sizeof</span>(arr) / <span class="hljs-built_in">sizeof</span>(arr[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 计算数组长度</span><br><br>    <span class="hljs-comment">// 默认升序排序</span><br>    std::<span class="hljs-built_in">sort</span>(arr, arr + n);<br></code></pre></td></tr></table></figure></li>
+<li>初始化不要偷懒</li>
+</ul>
+<p>数据类型的选择 float double long long long</p>
+<ul>
+<li><p>正确的数据结构才是解题的关键 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>; <span class="hljs-comment">// 初始化大小为n的vector</span><br><span class="hljs-built_in">sort</span>(a.<span class="hljs-built_in">begin</span>(), a.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 排序</span><br>arr.<span class="hljs-built_in">erase</span>(arr.<span class="hljs-built_in">unique</span>(arr.<span class="hljs-built_in">begin</span>(), arr.<span class="hljs-built_in">end</span>()), arr.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 去重</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>常见数据类型的范围</p></li>
+</ul>
+<table>
+
+<thead>
+<tr>
+<th>数据类型</th>
+<th>大小（字节）</th>
+<th>表示范围（近似）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>1</td>
+<td>-128 ~ 127 或 0 ~ 255</td>
+<td>字符型/字节型</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2</td>
+<td>-32,768 ~ 32,767</td>
+<td>短整型</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4</td>
+<td>-2.1×10⁹ ~ 2.1×10⁹</td>
+<td>默认整型</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>4/8</td>
+<td>同int或-9.2×10¹⁸ ~ 9.2×10¹⁸</td>
+<td>Windows:4, Linux/Mac:8</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>8</td>
+<td>-9.2×10¹⁸ ~ 9.2×10¹⁸</td>
+<td>64位整型</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>4</td>
+<td>约6-7位有效数字</td>
+<td>单精度浮点</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8</td>
+<td>约15-16位有效数字</td>
+<td>双精度浮点</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>16</td>
+<td>约18-19位有效数字</td>
+<td>扩展精度浮点</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>最大公因数 &gt;求两个数的最大公约数 a&gt;b 则有关系
+gcd(a,b)=gcd(b,a%b) 欧几里得算法</li>
+</ol>
+<p>2.时间问题 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> *<br><br>a=date(<span class="hljs-number">1949</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>)<br>b=date(<span class="hljs-number">2012</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>)<br>cnt=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> a&lt;=b:<br>    <span class="hljs-keyword">if</span> a.weekday()==<span class="hljs-number">6</span> <span class="hljs-keyword">and</span> a.day==<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> a.month==<span class="hljs-number">10</span>:<br>        cnt+=<span class="hljs-number">1</span><br>    a+=timedelta(<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(cnt)<br></code></pre></td></tr></table></figure> 3.stl之map &gt;
+它提供键值对（key-value）存储，基于红黑树实现，具有自动排序特性。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br></code></pre></td></tr></table></figure>
+<p>4.去重</p>
 
                 
               </div>
@@ -267,32 +392,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Image-Processing/" class="category-chain-item">Image Processing</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Class-Notes/" class="print-no-link">#Class Notes</a>
+        <a href="/tags/Algorithm/" class="print-no-link">#Algorithm</a>
       
     </div>
   
@@ -304,8 +408,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DIP</div>
-      <div>http://lyklbw.github.io/2025/03/12/DIP/</div>
+      <div>BBC</div>
+      <div>http://lyklbw.github.io/2025/03/24/BBC/</div>
     </div>
     <div class="license-meta">
       
@@ -317,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月12日</div>
+          <div>2025年3月24日</div>
         </div>
       
       
@@ -349,18 +453,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/14/PCAandRPCA/" title="PCAandRPCA">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">PCAandRPCA</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/11/Atomic-Habit/" title="Atomic_Habit">
-                        <span class="hidden-mobile">Atomic_Habit</span>
+                      <a href="/2025/03/14/PCAandRPCA/" title="PCAandRPCA">
+                        <span class="hidden-mobile">PCAandRPCA</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

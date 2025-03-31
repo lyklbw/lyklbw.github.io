@@ -1,0 +1,28 @@
+/* 运行时间样式 */
+.runtime-days {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1rem;
+  color: #3a5169;
+  font-weight: 600;
+}
+.runtime-time {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1rem;
+  color: #586069;
+}
+.author-info {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.9rem;
+  color: #6a737d;
+  padding-left: 8px;
+}
+
+/* 暗色模式适配 */
+[data-user-color-scheme="dark"] .runtime-days {
+  color: #58a6ff;
+}
+[data-user-color-scheme="dark"] .runtime-time,
+[data-user-color-scheme="dark"] .author-info {
+  color: #58a6ff;
+}
+

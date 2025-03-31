@@ -27,7 +27,7 @@
 <meta property="og:description" content="大三老登第一次参加蓝桥杯的知识点总结和笔记整理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-24T02:46:37.000Z">
-<meta property="article:modified_time" content="2025-03-28T16:20:11.982Z">
+<meta property="article:modified_time" content="2025-03-31T01:50:40.801Z">
 <meta property="article:author" content="lyklbw">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -188,7 +188,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -217,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.8k 字
         
       </span>
     
@@ -228,7 +228,7 @@
         
         
         
-          9 分钟
+          15 分钟
         
       </span>
     
@@ -328,6 +328,35 @@ target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/19703/learn
 这道题非常好，学到了很多，第一个是pair如何使用，以及对应的场景，关于剪枝，全部都变等于全都不变（！），第二个是使用数学公式代替一些小的循环（累加）操作
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; a[<span class="hljs-number">100000</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>    cin&gt;&gt;a[i].first&gt;&gt;a[i].second;<br>&#125;<br></code></pre></td></tr></table></figure></p></li>
 </ul>
+<h4 id="动态规划">2.动态规划</h4>
+<ol type="1">
+<li><p>DP全称是dynamic
+programming，这里programming不是编程，是一个表格保存之前的结果。 DP
+是一种编程思想，主要用于解决最优解类型的问题。
+其思路是为了求解当前的问题的最优解，使用子问题的最优解，然后综合处理，最终得到原问题的最优解。
+但是也不是说任何最优解问题都可以DP，使用dp的问题一般满足下面的两个特征：
+（1）最优子结构，就是指问题可以通过子问题最优解得到；体现为找出所有的子问题最优解，然后取其中的最优；
+（2）重叠子问题，就是子问题是会重复的。而不是一直产生新的子问题（比如分治类型的问题）。
+一般而言，满足上述两个条件的最优解问题都可以会使用DP来解决。</p></li>
+<li><p>有两种思路，一种是自顶向下，就是直接从原问题入手，不断利用子问题来求解，这种写法是一个递归地形式，但是需要加入备忘录，就是说利用一个数组存已经算出的子问题的结果，下次遇到直接返回。这个思路叫做memoization，备忘录。是一种空间换时间的做法，因为某些子问题会被调用到很多次，如果使用memo，那么时间上会很高效。比如求斐波那契数列，几乎每一个求解都会用到f(2)这样的子问题，如果事先存好，那么时间复杂度会下降很多。还有一点，memo不是为dp而生的，它也是一种思想或者技巧，在递归或者dfs中可以使用，如果要求时间复杂度可以考虑使用memo。第二种是自底向上，这种不需要递归，就是不断地计算出小问题的解，然后后面的问题就可以利用小问题的解得到</p></li>
+<li><p>练习题</p></li>
+</ol>
+<p>-3.1 包子凑数<a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/98/learning/?isWithAnswer=true&amp;page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&amp;tag_relation=intersection">2018蓝桥杯省赛动态规划题目</a></p>
+<blockquote>
+<p><strong>核心数学原理：Schur定理</strong> 舒尔定理
+对于一组互质的正整数 <span class="math inline">\(a_1, a_2, \ldots,
+a_n\)</span>（即 <span class="math inline">\(\gcd(a_1, a_2, \ldots, a_n)
+= 1\)</span>），Schur定理保证： - 存在有限的最大不可表示的正整数 <span
+class="math inline">\(G(a_1, \ldots, a_n)\)</span> - 所有大于 <span
+class="math inline">\(G\)</span>
+的正整数都可以表示为这些数的非负整数线性组合</p>
+</blockquote>
+<p>上限的确定
+并不一定要求数学的绝对严谨，我对这个问题的纠结导致了最后没拿满分 (6 10
+15) 我的这个是偏数学的方法，更像是一种暴力 最后的速度确实也很慢
+更加优雅的是利用dp[i] = dp[i]+dp[i-x]+dp[i-y]+dp[i-z]的思路</p>
+<p>ps:做好代码备份 找自己的历史代码的样子很狼狈幸好bbc有提交记录</p>
 <h4 id="其他题型积累">9.其他题型积累</h4>
 <ol start="0" type="1">
 <li>基本知识点</li>
@@ -478,6 +507,12 @@ gcd(a,b)=gcd(b,a%b) 欧几里得算法</li>
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/03/31/comments-configuration/" title="comments_configuration">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">comments_configuration</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -494,6 +529,50 @@ gcd(a,b)=gcd(b,a%b) 欧几里得算法</li>
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"lyklbw/blog_comments","repo-id":"R_kgDOORV2Ag","category":"General","category-id":"DIC_kwDOORV2As4ConsK","theme":"dark_high_contrast","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>

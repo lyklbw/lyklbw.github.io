@@ -19,22 +19,22 @@
   <meta name="author" content="lyklbw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="STL的使用以及笔记">
+    <meta name="description" content="做一个根据剪切板的图片或者文字自动生成日历中的日程的工具，现在时间可能比较紧张，没时间做，但是不能忘记，还是不要鸽">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STL">
-<meta property="og:url" content="http://lyklbw.github.io/2025/04/01/STL/index.html">
+<meta property="og:title" content="Calender_Auto">
+<meta property="og:url" content="http://lyklbw.github.io/2025/04/02/Calender-Auto/index.html">
 <meta property="og:site_name" content="lyklbw&#39;s blog">
-<meta property="og:description" content="STL的使用以及笔记">
+<meta property="og:description" content="做一个根据剪切板的图片或者文字自动生成日历中的日程的工具，现在时间可能比较紧张，没时间做，但是不能忘记，还是不要鸽">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-01T09:16:30.000Z">
-<meta property="article:modified_time" content="2025-04-01T11:37:11.520Z">
+<meta property="article:published_time" content="2025-04-02T07:24:35.000Z">
+<meta property="article:modified_time" content="2025-04-02T07:29:12.259Z">
 <meta property="article:author" content="lyklbw">
-<meta property="article:tag" content="STL">
+<meta property="article:tag" content="ForFun">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>STL - lyklbw&#39;s blog</title>
+  <title>Calender_Auto - lyklbw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="STL"></span>
+            <span id="subtitle" data-typed-text="Calender_Auto"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-01 17:16" pubdate>
-          2025年4月1日 下午
+        <time datetime="2025-04-02 15:24" pubdate>
+          2025年4月2日 下午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          794 字
+          61 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          7 分钟
+          1 分钟
         
       </span>
     
@@ -278,76 +278,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">STL</h1>
+            <h1 id="seo-header">Calender_Auto</h1>
             
             
               <div class="markdown-body">
                 
-                <p>目录： - <a href="#vector">vector</a> - <a href="#map">map</a> - <a
-href="#string">string</a> - <a href="#pair">pair</a></p>
-<p>前言：</p>
-<p>博主在写蓝桥杯算法题目的时候发现大部分时间并不是如何构思算法的设置，大部分时间反而是浪费在了检查数据类型的初始化，以及东拼西凑stl的代码，来完成特定的任务，让博主感到很不舒服。于是决定写一篇stl的使用笔记，方便以后查阅。</p>
-<table style="width:6%;">
-
-<tbody>
-<tr>
-<td>数组的初始化问题</td>
-</tr>
-<tr>
-<td>C++ 标准要求数组的长度必须是编译期已知的常量表达式 &gt;
-例如：<code>int a[10];</code> 是合法的，<code>int a[n];</code>
-是不合法的</td>
-</tr>
-</tbody>
-</table>
-<h3 id="vector">vector</h3>
-<blockquote>
-<p>vector 是连续的顺序的储存结构(和数组一样的类别)，但是有长度可变的特性
-而且vector是存在堆 不会出现暴栈的情况，因为是动态分配，更节省内存
-能提前制定长度就提前制定长度</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//初始化</span><br>vector&lt;<span class="hljs-type">int</span>&gt; a; <span class="hljs-comment">// 空的vector</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>; <span class="hljs-comment">// 10个元素的vector</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">10</span>, <span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// 10个元素的vector，初始值为0</span><br><br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">mat</span>(<span class="hljs-number">100</span>,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;());<span class="hljs-comment">//100rows 不指明列</span><br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">mat</span>(<span class="hljs-number">100</span>,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">10</span>,<span class="hljs-number">-1</span>));<span class="hljs-comment">//100rows 10column and -1 init all num</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//常用操作</span><br><span class="hljs-comment">//1.遍历读入</span><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>    <span class="hljs-type">int</span> tmp;<br>    cin&gt;&gt;tmp;<br>    arr.<span class="hljs-built_in">push_back</span>(tmp);<br>&#125;<br><span class="hljs-comment">//常用</span><br>arr[<span class="hljs-number">3</span>]<span class="hljs-comment">//访问第四个，索引同样以0开始</span><br>arr.<span class="hljs-built_in">size</span>()<span class="hljs-comment">//读取长度</span><br>arr.<span class="hljs-built_in">empty</span>()<span class="hljs-comment">//检查是否为空</span><br>arr.<span class="hljs-built_in">resize</span>(<span class="hljs-number">10</span>);<span class="hljs-comment">//延长为10，超过原始长度的部分自动为0</span><br>arr.<span class="hljs-built_in">begin</span>();<br>arr.<span class="hljs-built_in">end</span>();<br><span class="hljs-built_in">sort</span>(arr.<span class="hljs-built_in">begin</span>(),arr.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//对vector排序</span><br></code></pre></td></tr></table></figure>
-<h3 id="map">map</h3>
-<blockquote>
-<p>提供对数时间的有序键值对结构。底层原理是红黑树。一个键只会出现一次</p>
-</blockquote>
-<p>map&lt;键类型, 值类型, 比较器&gt; mp <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//初始化</span><br>map &lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; mp;<span class="hljs-comment">//int-&gt;vec 的映射（键从小到大）</span><br>map &lt;<span class="hljs-type">int</span>, vector &lt;<span class="hljs-type">int</span>&gt; ，greater&lt;<span class="hljs-type">int</span>&gt; &gt; mp1<span class="hljs-comment">//int-&gt;vec的映射（键从大到小）</span><br><span class="hljs-comment">//输入匹配，清晰明了</span><br>map&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt; &gt; data;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>        cin&gt;&gt;value;<br>        cin&gt;&gt;key;<br>        data[key].<span class="hljs-built_in">push_back</span>(value);<br>    &#125;<br></code></pre></td></tr></table></figure></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//遍历</span><br><span class="hljs-comment">//写法1</span><br><span class="hljs-keyword">for</span>(&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt; &gt; ::iterator it=mp.<span class="hljs-built_in">begin</span>(); it!= mp.<span class="hljs-built_in">end</span>();it_++)&#123;<br>    cout&lt;&lt;it-&gt;first&lt;&lt;it-&gt;second&lt;&lt;endl;<br>&#125;<br><span class="hljs-comment">//写法2</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;pnt : mp)&#123;<br>    cout&lt;&lt;pr.first&lt;&lt;pr.second&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="string">string</h3>
-<blockquote>
-<p>储存字符串的 string末尾没有''</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">string s1;           <span class="hljs-comment">// 构造字符串，为空</span><br>string s2 = <span class="hljs-string">&quot;awa!&quot;</span>;  <span class="hljs-comment">// 构造字符串，并赋值awa!</span><br><span class="hljs-function">string <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-number">10</span>, <span class="hljs-string">&#x27;6&#x27;</span>)</span></span>;  <span class="hljs-comment">// 构造字符串，通过构造函数构造为6666666666</span><br></code></pre></td></tr></table></figure>
-<table>
-
-<thead>
-<tr>
-<th>源</th>
-<th>目的</th>
-<th>函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int / long long / float / double / long double</td>
-<td>string</td>
-<td>to_string()</td>
-</tr>
-<tr>
-<td>string</td>
-<td>int</td>
-<td>stoi()</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//常见操作</span><br><span class="hljs-comment">// 优化前: 15139ms</span><br>string s;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5e5</span>; i++)<br>    s = s + <span class="hljs-string">&quot;a&quot;</span>;<br><br><span class="hljs-comment">// 优化后: &lt; 1ms (计时器显示0)</span><br>string s;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5e5</span>; i++)<br>    s += <span class="hljs-string">&quot;a&quot;</span>;<br></code></pre></td></tr></table></figure>
-<h3 id="pair">pair</h3>
-<h2 id="include-utility">&gt; <code>#include &lt;utility&gt;</code></h2>
-<p>在士兵训练问题中思考：为什么map不能替代pair数组？</p>
-<p>因为map中一个key只能对应一个value，而pair没有这个要求，同时pair&lt;int,int&gt;
-arr[N],对其进行排序，先根据first排序再根据second排序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">char</span>&gt; pr = &#123;<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;a&#x27;</span>&#125;;<span class="hljs-comment">//单个pair的初始化</span><br>pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">char</span>&gt; arr[N];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++&gt;)&#123;<br>    cin&gt;&gt;arr[i].fisrt&gt;&gt;arr[i].second;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>实现的大致功能是
+可以把所有带有时间地点信息的文字或者图片，打开日历自动，转化为ics文件，放入日历中，并存储与iCloud
+实现便捷的日历添加功能</p>
 
                 
               </div>
@@ -366,12 +304,12 @@ arr[N],对其进行排序，先根据first排序再根据second排序</p>
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
   
   
     <span>></span>
     
-  <a href="/categories/Algorithm/C/" class="category-chain-item">C++</a>
+  <a href="/categories/Python/ForFun/" class="category-chain-item">ForFun</a>
   
   
 
@@ -388,7 +326,7 @@ arr[N],对其进行排序，先根据first排序再根据second排序</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/STL/" class="print-no-link">#STL</a>
+        <a href="/tags/ForFun/" class="print-no-link">#ForFun</a>
       
     </div>
   
@@ -400,8 +338,8 @@ arr[N],对其进行排序，先根据first排序再根据second排序</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>STL</div>
-      <div>http://lyklbw.github.io/2025/04/01/STL/</div>
+      <div>Calender_Auto</div>
+      <div>http://lyklbw.github.io/2025/04/02/Calender-Auto/</div>
     </div>
     <div class="license-meta">
       
@@ -413,7 +351,7 @@ arr[N],对其进行排序，先根据first排序再根据second排序</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月1日</div>
+          <div>2025年4月2日</div>
         </div>
       
       
@@ -445,18 +383,12 @@ arr[N],对其进行排序，先根据first排序再根据second排序</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/02/Calender-Auto/" title="Calender_Auto">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Calender_Auto</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/31/comments-configuration/" title="comments_configuration">
-                        <span class="hidden-mobile">comments_configuration</span>
+                      <a href="/2025/04/01/STL/" title="STL">
+                        <span class="hidden-mobile">STL</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

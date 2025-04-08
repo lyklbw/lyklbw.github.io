@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/bitbug_favicon.ico">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#010409">
+  <meta name="author" content="lyklbw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大三老登第一次参加蓝桥杯的知识点总结和笔记整理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BBC">
+<meta property="og:url" content="http://lyklbw.github.io/2025/03/24/BBC/index.html">
+<meta property="og:site_name" content="lyklbw&#39;s blog">
+<meta property="og:description" content="大三老登第一次参加蓝桥杯的知识点总结和笔记整理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://lyklbw.github.io/2025/03/24/BBC/image.png">
+<meta property="article:published_time" content="2025-03-24T02:46:37.000Z">
+<meta property="article:modified_time" content="2025-04-07T08:17:42.258Z">
+<meta property="article:author" content="lyklbw">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://lyklbw.github.io/2025/03/24/BBC/image.png">
+  
+  
+  
+  <title>BBC - lyklbw&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"e9cTmD6XipksZ3IjZYGFuOyW-gzGzoHsz","app_key":"kHfazhVxm7FKZNx4PpZUHc4A","server_url":"https://e9ctmd6x.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lyklbw&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="BBC"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-24 10:46" pubdate>
+          2025年3月24日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">BBC</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="蓝桥杯知识点与算法简介">蓝桥杯知识点与算法简介</h3>
+<blockquote>
+<p>纯属小白
+望各位ACM，OI大佬不要嘲笑,以下是这半个月的学习安排和计划，重中之重的方法在于搜索和回溯的应用，搜索包括DFS、BFS，更难一点的就是DFS记忆化搜索，至于回溯最好去了解一下八皇后问题，这样可以对于回溯了解的更加深刻</p>
+</blockquote>
+<p>1.贪心算法</p>
+<p>2.动态规划</p>
+<p>3.递推递归</p>
+<p>4.搜索</p>
+<p>5.分治算法</p>
+<p>6.枚举算法</p>
+<p>7.BFS算法</p>
+<p>8.DFS算法</p>
+<p>9.图论</p>
+<p>10.数论</p>
+<p>11.其他题型积累 to do lists: //待办</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />1.贪心算法</label></li>
+<li><label><input type="checkbox" />2.前缀和</label></li>
+<li><label><input type="checkbox" />3.背包问题</label></li>
+<li><label><input type="checkbox" />4.二进制计算</label></li>
+<li><label><input type="checkbox" />5.回溯</label></li>
+<li><label><input type="checkbox" />6.二叉树</label></li>
+</ul>
+<h4 id="贪心算法">1.贪心算法</h4>
+<ol type="1">
+<li>基本思想</li>
+</ol>
+<p>1）贪婪算法（贪心算法）是指在对问题进行求解时，在每一步选择中都采取最好或者最优（即最有利）的选择，从而希望能够导致结果是最好或者最优的算法。</p>
+<p>2）贪婪算法所得到的结果不一定是最优的结果（有时候会是最优解），但是都是相对近似（接近）最优解的结果。</p>
+<ol start="2" type="1">
+<li>局限性</li>
+</ol>
+<p>贪心算法失效的很大一个原因在于它明显的局限性：它几乎只考虑局部最优解。
+所谓局部最优，就是只考虑当前的最大利益，既不向前多看一步，也不向后多看一步，导致每次都只用当前阶段的最优解。
+因此在绝大多数情况下，贪心算法不能得到整体最优解，但它的解是最优解的一个很好近似。</p>
+<ol start="3" type="1">
+<li>练习题</li>
+</ol>
+<ul>
+<li><p>3.1 最大比例： <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/120/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2016蓝桥杯省赛贪心算法题目</a>
+利用vector的erase和unique去重，然后使用贪心找到最小的公倍数之比</p></li>
+<li><p>3.2 付账问题： <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/174/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2018蓝桥杯省赛贪心算法题目</a>
+非常典型的贪心，每一次都是取当前情况的最优解 题目要求输出n位小数：
+iomanip
+cout&lt;&lt;fixed&lt;&lt;setprecision(n)&lt;&lt;&gt;&gt;&gt;&gt;</p></li>
+<li><p>3.3 日志统计 双指针 贪心 <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/179/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E8%B4%AA%E5%BF%83&amp;tag_relation=intersection">2018蓝桥杯省赛贪心算法题目</a>
+学习了map的使用，key为int，value为vector <int> 注意空格 end不存储数据
+使用引用避免大量空间占用 使用迭代器依次访问
+还是得用iterator，因为key的值并不连续 iter双指针 iter-&gt;first
+iter-&gt;second 分别控制key和value（vector）</p></li>
+<li><p>3.4 训练士兵 <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/19703/learning/">2018蓝桥杯省赛贪心算法题目</a>
+这道题非常好，学到了很多，第一个是pair如何使用，以及对应的场景，关于剪枝，全部都变等于全都不变（！），第二个是使用数学公式代替一些小的循环（累加）操作
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; a[<span class="hljs-number">100000</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>    cin&gt;&gt;a[i].first&gt;&gt;a[i].second;<br>&#125;<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h4 id="动态规划">2.动态规划</h4>
+<blockquote>
+<p>动态规划中最重要的是找到状态转移方程！！！</p>
+</blockquote>
+<ol type="1">
+<li><p>DP全称是dynamic
+programming，这里programming不是编程，是一个表格保存之前的结果。 DP
+是一种编程思想，主要用于解决最优解类型的问题。
+其思路是为了求解当前的问题的最优解，使用子问题的最优解，然后综合处理，最终得到原问题的最优解。
+但是也不是说任何最优解问题都可以DP，使用dp的问题一般满足下面的两个特征：
+（1）最优子结构，就是指问题可以通过子问题最优解得到；体现为找出所有的子问题最优解，然后取其中的最优；
+（2）重叠子问题，就是子问题是会重复的。而不是一直产生新的子问题（比如分治类型的问题）。
+一般而言，满足上述两个条件的最优解问题都可以会使用DP来解决。</p></li>
+<li><p>有两种思路，一种是自顶向下，就是直接从原问题入手，不断利用子问题来求解，这种写法是一个递归地形式，但是需要加入备忘录，就是说利用一个数组存已经算出的子问题的结果，下次遇到直接返回。这个思路叫做memoization，备忘录。是一种空间换时间的做法，因为某些子问题会被调用到很多次，如果使用memo，那么时间上会很高效。比如求斐波那契数列，几乎每一个求解都会用到f(2)这样的子问题，如果事先存好，那么时间复杂度会下降很多。还有一点，memo不是为dp而生的，它也是一种思想或者技巧，在递归或者dfs中可以使用，如果要求时间复杂度可以考虑使用memo。第二种是自底向上，这种不需要递归，就是不断地计算出小问题的解，然后后面的问题就可以利用小问题的解得到</p></li>
+<li><p>练习题</p></li>
+</ol>
+<p>-3.1 包子凑数<a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/98/learning/?isWithAnswer=true&amp;page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=%E7%9C%81%E8%B5%9B,%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&amp;tag_relation=intersection">2018蓝桥杯省赛动态规划题目</a></p>
+<blockquote>
+<p><strong>核心数学原理：Schur定理</strong> 舒尔定理
+对于一组互质的正整数 <span class="math inline">\(a_1, a_2, \ldots,
+a_n\)</span>（即 <span class="math inline">\(\gcd(a_1, a_2, \ldots, a_n)
+= 1\)</span>），Schur定理保证： - 存在有限的最大不可表示的正整数 <span
+class="math inline">\(G(a_1, \ldots, a_n)\)</span> - 所有大于 <span
+class="math inline">\(G\)</span>
+的正整数都可以表示为这些数的非负整数线性组合</p>
+</blockquote>
+<p>上限的确定
+并不一定要求数学的绝对严谨，我对这个问题的纠结导致了最后没拿满分 (6 10
+15) 我的这个是偏数学的方法，更像是一种暴力 最后的速度确实也很慢
+更加优雅的是利用dp[i] = dp[i]+dp[i-x]+dp[i-y]+dp[i-z]的思路</p>
+<p>ps:做好代码备份 找自己的历史代码的样子很狼狈幸好bbc有提交记录</p>
+<ul>
+<li>3.2 对局匹配（经典题型：打家劫舍）<a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/107/learning/?page=1&amp;first_category_id=1&amp;tags=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&amp;tag_relation=intersection">2017国赛</a></li>
+</ul>
+<p>做这道题目的发现
+动态规划的核心应该是如何寻找到子问题的表达式（吗？）自己目前动态规划的理解
+以及stl的使用实在是太糟糕了 现在加急补上</p>
+<p>分段分段 找状态转移方程 vector初始化没设置长度就是push_back
+设置了长度直接当数组用；</p>
+<h4 id="bfs">7.BFS</h4>
+<blockquote>
+<p>将队首结点可拓展的点入队，如果没有可拓展的点，将队首结点出队。重复以上步骤，直到到达目标位置或者队列为空
+—— bfs先找到的一定是最短的。但是如果是加权边的话这样就会出问题了</p>
+</blockquote>
+<p>使用栈的思维解决问题，但是不必要使用此数据结构，可以自己实现</p>
+<p>7.1 经典——走迷宫 queue <int> q; <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">q.<span class="hljs-built_in">push</span>(value);<span class="hljs-comment">//创建一个空队列，存储int类型</span><br>q.<span class="hljs-built_in">pop</span>();<br><span class="hljs-type">int</span> front = q.<span class="hljs-built_in">front</span>();<span class="hljs-comment">//返回第一个</span><br><span class="hljs-type">int</span> back = q.<span class="hljs-built_in">back</span>();<br><span class="hljs-type">int</span> size = q.<span class="hljs-built_in">size</span>();<br></code></pre></td></tr></table></figure></p>
+<h4 id="dfs">8.DFS</h4>
+<h4 id="数学">10.数学</h4>
+<ol type="1">
+<li><p>进制转换</p></li>
+<li><p>平面几何</p></li>
+<li><p>组合数学</p></li>
+<li><p>质数判断</p></li>
+<li><p>快速幂 <img src="image.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/116/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tag_relation=union&amp;tags=%E5%BF%AB%E9%80%9F%E5%B9%82">2017国赛小数第n位</a>
+实际上要求的值是a<em>10^(n+2)/b <span
+class="math inline">\(n\)</span>=<span
+class="math inline">\(10^9\)</span> 但是要解决溢出问题 我们会注意到
+当我们计算取余时，只会消除掉整数部分，而小数部分会保留在取余的结果中，所以我的思路是求得（a</em>10^(n-1)）%b的值，然后再<em>1000/b,就是最后的答案
+又因为(a</em>b)%p=(a%p*b%p)%p （整数域）
+收获很多，但是这种题第一次遇到我肯定不会</p></li>
+<li><p>最大公因数 and 最小公倍数</p></li>
+</ol>
+<h4 id="其他题型积累">11.其他题型积累</h4>
+<ol start="0" type="1">
+<li>基本知识点</li>
+</ol>
+<ul>
+<li>排序算法 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span> <span class="hljs-comment">// 包含 std::sort</span></span><br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">sizeof</span>(arr) / <span class="hljs-built_in">sizeof</span>(arr[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 计算数组长度</span><br><br>    <span class="hljs-comment">// 默认升序排序</span><br>    std::<span class="hljs-built_in">sort</span>(arr, arr + n);<br></code></pre></td></tr></table></figure></li>
+<li>初始化不要偷懒</li>
+</ul>
+<p>数据类型的选择 float double long long long</p>
+<ul>
+<li><p>正确的数据结构才是解题的关键 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>; <span class="hljs-comment">// 初始化大小为n的vector</span><br><span class="hljs-built_in">sort</span>(a.<span class="hljs-built_in">begin</span>(), a.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 排序</span><br>arr.<span class="hljs-built_in">erase</span>(arr.<span class="hljs-built_in">unique</span>(arr.<span class="hljs-built_in">begin</span>(), arr.<span class="hljs-built_in">end</span>()), arr.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 去重</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>常见数据类型的范围</p></li>
+</ul>
+<table>
+
+<thead>
+<tr>
+<th>数据类型</th>
+<th>大小（字节）</th>
+<th>表示范围（近似）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>1</td>
+<td>-128 ~ 127 或 0 ~ 255</td>
+<td>字符型/字节型</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2</td>
+<td>-32,768 ~ 32,767</td>
+<td>短整型</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4</td>
+<td>-2.1×10⁹ ~ 2.1×10⁹</td>
+<td>默认整型</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>4/8</td>
+<td>同int或-9.2×10¹⁸ ~ 9.2×10¹⁸</td>
+<td>Windows:4, Linux/Mac:8</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>8</td>
+<td>-9.2×10¹⁸ ~ 9.2×10¹⁸</td>
+<td>64位整型</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>4</td>
+<td>约6-7位有效数字</td>
+<td>单精度浮点</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8</td>
+<td>约15-16位有效数字</td>
+<td>双精度浮点</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>16</td>
+<td>约18-19位有效数字</td>
+<td>扩展精度浮点</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>去重,剪枝 提前结束循环 ， 设置预先条件</li>
+</ul>
+<ol type="1">
+<li><p>最大公因数 &gt;求两个数的最大公约数 a&gt;b 则有关系
+gcd(a,b)=gcd(b,a%b) 欧几里得算法</p></li>
+<li><p>时间问题 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> *<br><br>a=date(<span class="hljs-number">1949</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>)<br>b=date(<span class="hljs-number">2012</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>)<br>cnt=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> a&lt;=b:<br>    <span class="hljs-keyword">if</span> a.weekday()==<span class="hljs-number">6</span> <span class="hljs-keyword">and</span> a.day==<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> a.month==<span class="hljs-number">10</span>:<br>        cnt+=<span class="hljs-number">1</span><br>    a+=timedelta(<span class="hljs-number">1</span>)<br><span class="hljs-built_in">print</span>(cnt)<br></code></pre></td></tr></table></figure></p></li>
+<li><p>二分搜索法</p></li>
+<li><p>20 个圆和 20 条直线最多能把平面分成多少个部分？</p></li>
+</ol>
+<p>m个圆可以把平面分成 <span class="math inline">\(m^2 - m +
+2\)</span></p>
+<p>n条直线可以把平面分成 <span class="math inline">\(n^2/2 + n/2 +
+1\)</span></p>
+<p>递推的时候有点坑的是 最后f(m,1)=f(m,0)+2m 没有常数项</p>
+<p>这里不能想当然 因为 包含了初始圆这个条件、</p>
+<p>5.卡特兰数//国赛题</p>
+<p>6.字符串处理</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3213/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tag_relation=union&amp;name=%E5%B9%B3%E6%96%B9%E5%B7%AE">c++高精度平方和</a></p>
+<p>string 变长 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string a;<br>a.<span class="hljs-built_in">resize</span>(a_len);<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a_len;i++)&#123;<br>    a[i]=<span class="hljs-string">&#x27;0&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Algorithm/" class="print-no-link">#Algorithm</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>BBC</div>
+      <div>http://lyklbw.github.io/2025/03/24/BBC/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lyklbw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/31/comments-configuration/" title="comments_configuration">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">comments_configuration</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/14/PCAandRPCA/" title="PCAandRPCA">
+                        <span class="hidden-mobile">PCAandRPCA</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"lyklbw/blog_comments","repo-id":"R_kgDOORV2Ag","category":"General","category-id":"DIC_kwDOORV2As4ConsK","theme":"dark_high_contrast","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <div> <span id="timeDate" class="runtime-days">载入天数...</span> <span id="times" class="runtime-time">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

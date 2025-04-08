@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=light>
 
 
 
@@ -57,11 +57,15 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"e9cTmD6XipksZ3IjZYGFuOyW-gzGzoHsz","app_key":"kHfazhVxm7FKZNx4PpZUHc4A","server_url":"https://e9ctmd6x.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -71,6 +75,19 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
   
@@ -130,7 +147,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tag-fill"></i>
+                <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
             </li>
@@ -142,7 +159,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-about-fill"></i>
+                <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
             </li>
@@ -164,7 +181,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/groupphoto.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -205,24 +222,18 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2025/02/15/ADMM/" target="_self">
-          <img src="/img/ADMM.jpg" srcset="/img/loading.gif" lazyload alt="ADMM">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/02/15/ADMM/" target="_self">
-          ADMM
+        <a href="/2025/04/07/SAIR/" target="_self">
+          SAIR
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2025/02/15/ADMM/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/07/SAIR/" target="_self">
         <div>
-          ADMM算法的一些理解和记录
+          记录关于合成孔径干涉辐射计的RFI定位与mitigation环节的学习与思考
         </div>
       </a>
 
@@ -230,8 +241,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-02-15 15:42" pubdate>
-              2025-02-15
+            <time datetime="2025-04-07 16:28" pubdate>
+              2025-04-07
             </time>
           </div>
         
@@ -248,6 +259,20 @@
         
   <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/" class="category-chain-item">RFI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/Mitigation/" class="category-chain-item">Mitigation</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -272,24 +297,18 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2025/02/04/mychat/" target="_self">
-          <img src="/img/mychat.jpg" srcset="/img/loading.gif" lazyload alt="My Chatgpt">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/02/04/mychat/" target="_self">
-          My Chatgpt
+        <a href="/2025/04/07/norm/" target="_self">
+          Norm
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2025/02/04/mychat/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/07/norm/" target="_self">
         <div>
-          利用开源工具搭建了自己的chatgpt
+          向量范数、矩阵范数、加权范数等的定义与应用场景介绍
         </div>
       </a>
 
@@ -297,8 +316,48 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-02-04 11:16" pubdate>
-              2025-02-04
+            <time datetime="2025-04-07 16:28" pubdate>
+              2025-04-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Algorithm/">#Algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/02/Calender-Auto/" target="_self">
+          Calendar_Auto
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/02/Calender-Auto/" target="_self">
+        <div>
+          做一个根据剪切板的图片或者文字自动生成日历中的日程的工具，现在时间可能比较紧张，没时间做，但是不能忘记，还是不要鸽
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-02 15:24" pubdate>
+              2025-04-02
             </time>
           </div>
         
@@ -313,7 +372,143 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Chatbot/" class="category-chain-item">Chatbot</a>
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Python/ForFun/" class="category-chain-item">ForFun</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ForFun/">#ForFun</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/01/STL/" target="_self">
+          STL
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/01/STL/" target="_self">
+        <div>
+          STL的使用以及笔记
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-01 17:16" pubdate>
+              2025-04-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/C/" class="category-chain-item">C++</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/STL/">#STL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/31/comments-configuration/" target="_self">
+          comments_configuration
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/31/comments-configuration/" target="_self">
+        <div>
+          记录了在hexo-fluid主题中配置评论的过程，使用giscus评论系统
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-31 09:53" pubdate>
+              2025-03-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Configuration/" class="category-chain-item">Configuration</a>
   
   
 
@@ -328,7 +523,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Chatgpt/">#Chatgpt</a>
+              <a href="/tags/Configuration/">#Configuration</a>
             
           </div>
         
@@ -339,24 +534,18 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2025/02/01/SLIC/" target="_self">
-          <img src="/img/SILC.jpg" srcset="/img/loading.gif" lazyload alt="SLIC算法">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/02/01/SLIC/" target="_self">
-          SLIC算法
+        <a href="/2025/03/24/BBC/" target="_self">
+          BBC
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2025/02/01/SLIC/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/24/BBC/" target="_self">
         <div>
-          介绍了SLIC的基本原理和实现代码
+          大三老登第一次参加蓝桥杯的知识点总结和笔记整理
         </div>
       </a>
 
@@ -364,8 +553,109 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-02-01 22:07" pubdate>
-              2025-02-01
+            <time datetime="2025-03-24 10:46" pubdate>
+              2025-03-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Algorithm/">#Algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/14/PCAandRPCA/" target="_self">
+          PCAandRPCA
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/PCAandRPCA/" target="_self">
+        <div>
+          介绍PCA和RPCA的基本原理
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-14 09:21" pubdate>
+              2025-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/RFI-Localization/" class="category-chain-item">RFI Localization</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PCA/">#PCA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/12/DIP/" target="_self">
+          DIP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/12/DIP/" target="_self">
+        <div>
+          数字图像处理的知识点和笔记整理
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-12 14:20" pubdate>
+              2025-03-12
             </time>
           </div>
         
@@ -402,7 +692,143 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/RFI-Localization/">#RFI Localization</a>
+              <a href="/tags/Class-Notes/">#Class Notes</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/11/Atomic-Habit/" target="_self">
+          Atomic_Habit
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/11/Atomic-Habit/" target="_self">
+        <div>
+          读书笔记《原子习惯》一书
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-11 09:44" pubdate>
+              2025-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Reading/" class="category-chain-item">Reading</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Reading-Notes/">#Reading Notes</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/02/15/ADMM/" target="_self">
+          ADMM Algorithm
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/02/15/ADMM/" target="_self">
+        <div>
+          ADMM算法的一些理解和记录
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-02-15 15:42" pubdate>
+              2025-02-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/" class="category-chain-item">RFI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/Localization/" class="category-chain-item">Localization</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Algorithm/">#Algorithm</a>
             
           </div>
         
@@ -411,6 +837,12 @@
   </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
 
 
 
@@ -434,6 +866,10 @@
 
   <footer>
     <div class="footer-inner">
+  
+    <div class="footer-content">
+      <div> <span id="timeDate" class="runtime-days">载入天数...</span> <span id="times" class="runtime-time">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+    </div>
   
   
   
@@ -486,7 +922,13 @@
 
 
 
+  <script defer src="/js/leancloud.js" ></script>
 
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
 
 
 

@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/bitbug_favicon.ico">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#010409">
+  <meta name="author" content="lyklbw">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录关于合成孔径干涉辐射计的RFI定位与mitigation环节的学习与思考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAIR">
+<meta property="og:url" content="http://lyklbw.github.io/2025/04/07/SAIR/index.html">
+<meta property="og:site_name" content="lyklbw&#39;s blog">
+<meta property="og:description" content="记录关于合成孔径干涉辐射计的RFI定位与mitigation环节的学习与思考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-7.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-8.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-9.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-10.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-11.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-1.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-2.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-3.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-4.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-5.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-6.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-13.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-15.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-16.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-17.png">
+<meta property="og:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-18.png">
+<meta property="article:published_time" content="2025-04-07T08:28:26.000Z">
+<meta property="article:modified_time" content="2025-04-08T08:29:56.499Z">
+<meta property="article:author" content="lyklbw">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://lyklbw.github.io/2025/04/07/SAIR/image-7.png">
+  
+  
+  
+  <title>SAIR - lyklbw&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"e9cTmD6XipksZ3IjZYGFuOyW-gzGzoHsz","app_key":"kHfazhVxm7FKZNx4PpZUHc4A","server_url":"https://e9ctmd6x.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>lyklbw&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SAIR"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-07 16:28" pubdate>
+          2025年4月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          550 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SAIR</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="文章思路">1.文章思路</h3>
+<h2 id="principles-of-interferometric-radiometry">#### 1.1Principles of
+Interferometric Radiometry</h2>
+<p><strong>干涉式辐射测量（Interferometric
+Radiometry）是一种通过测量天线之间的相关性来获取目标亮度温度（Brightness
+Temperature, BT）分布的技术。其核心是可见性函数（Visibility
+Function），它表示两个天线之间的相关输出。</strong></p>
+<p>我们需要指出的是，干涉式辐射计的得到的可见性函数<span
+class="math inline">\(V(u,v)\)</span>,而真正能让人看懂的是BT分布<span
+class="math inline">\(T_b(u,v)\)</span>,两者之间需要转化，他们有如下关系：
+<img src="image-7.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<figure>
+<img src="image-8.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-11.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>现在我们得到了<span class="math inline">\(V\)</span>与<span
+class="math inline">\(T\)</span>之间的关系</p>
+<p>这里补充对于<span class="math inline">\(V(u,v)\)</span>的理解，<span
+class="math inline">\((u,v)\)</span>为基线坐标，可以理解为空间频率
+基线越长（即 <span class="math inline">\(u,v\)</span> 越大） →
+干涉条纹越密集 → 能分辨更小的角度变化（即更高分辨率） <img
+src="image-14.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h4 id="rfi-源协方差矩阵的建立">1.2 RFI 源协方差矩阵的建立</h4>
+<figure>
+<img src="image-1.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>这个模型是如何建立的呢</p>
+<figure>
+<img src="image-2.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-3.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-4.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>现在我们建立了天线阵列的基本接收模型，但是干涉辐射测量中，我们得到的是RFI源的协方差矩阵，而不是接收模型中的接收信号。</p>
+<figure>
+<img src="image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-13.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h4 id="稀疏和低秩特性的分析">1.3 稀疏和低秩特性的分析</h4>
+<p>这里我们使用主成分分析的角度来分析干涉辐射测量得到的协方差矩阵的特性</p>
+<figure>
+<img src="image-15.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>自然场景（如土壤、海洋）的亮度温度（BT）在空间上变化缓慢，其能量主要集中在低频频谱。根据压缩感知理论，若信号能量集中在少量成分中，则该信号具有稀疏性，下面是量化</p>
+<figure>
+<img src="image-16.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>同样可以证明基于SMOS卫星受RFI污染的协方差矩阵数据（图2）：特征值曲线快速下降后趋于平缓，表明大部分能量集中在少数主成分中。证实了RFI协方差矩阵的低秩特性</p>
+<figure>
+<img src="image-17.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="image-18.png" srcset="/img/loading.gif" lazyload alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>这里对范数进行补充： <a href="/2025/04/07/norm/">跳转到 norm
+的介绍</a></p>
+<p>在本文中核范数用来约束矩阵的秩，促使其低秩化。核范数是矩阵奇异值之和，表示矩阵的秩。</p>
+<p>而<span
+class="math inline">\(L1\)</span>范数用来约束矩阵的稀疏性，促使其稀疏化。<span
+class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/" class="category-chain-item">RFI</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Algorithm/RFI/Mitigation/" class="category-chain-item">Mitigation</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Algorithm/" class="print-no-link">#Algorithm</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SAIR</div>
+      <div>http://lyklbw.github.io/2025/04/07/SAIR/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>lyklbw</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/07/norm/" title="Norm">
+                        <span class="hidden-mobile">Norm</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"lyklbw/blog_comments","repo-id":"R_kgDOORV2Ag","category":"General","category-id":"DIC_kwDOORV2As4ConsK","theme":"dark_high_contrast","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <div> <span id="timeDate" class="runtime-days">载入天数...</span> <span id="times" class="runtime-time">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

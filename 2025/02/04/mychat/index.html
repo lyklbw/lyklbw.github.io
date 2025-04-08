@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=light>
 
 
 
@@ -21,22 +21,20 @@
   
     <meta name="description" content="利用开源工具搭建了自己的chatgpt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My Chatgpt">
+<meta property="og:title" content="My Chatgpt Web">
 <meta property="og:url" content="http://lyklbw.github.io/2025/02/04/mychat/index.html">
 <meta property="og:site_name" content="lyklbw&#39;s blog">
 <meta property="og:description" content="利用开源工具搭建了自己的chatgpt">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lyklbw.github.io/img/mychat.jpg">
 <meta property="article:published_time" content="2025-02-04T03:16:18.000Z">
-<meta property="article:modified_time" content="2025-02-04T14:06:16.882Z">
+<meta property="article:modified_time" content="2025-03-14T10:30:35.438Z">
 <meta property="article:author" content="lyklbw">
 <meta property="article:tag" content="Chatgpt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://lyklbw.github.io/img/mychat.jpg">
   
   
   
-  <title>My Chatgpt - lyklbw&#39;s blog</title>
+  <title>My Chatgpt Web - lyklbw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -70,11 +68,15 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lyklbw.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"e9cTmD6XipksZ3IjZYGFuOyW-gzGzoHsz","app_key":"kHfazhVxm7FKZNx4PpZUHc4A","server_url":"https://e9ctmd6x.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -84,6 +86,19 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
   
@@ -143,7 +158,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tag-fill"></i>
+                <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
             </li>
@@ -155,7 +170,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-about-fill"></i>
+                <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
             </li>
@@ -183,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="My Chatgpt"></span>
+            <span id="subtitle" data-typed-text="My Chatgpt Web"></span>
           
         </div>
 
@@ -224,6 +239,15 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
   </div>
 
 
@@ -254,7 +278,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">My Chatgpt</h1>
+            <h1 id="seo-header">My Chatgpt Web</h1>
             
             
               <div class="markdown-body">
@@ -326,7 +350,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>My Chatgpt</div>
+      <div>My Chatgpt Web</div>
       <div>http://lyklbw.github.io/2025/02/04/mychat/</div>
     </div>
     <div class="license-meta">
@@ -371,9 +395,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/15/ADMM/" title="ADMM">
+                      <a href="/2025/02/15/ADMM/" title="ADMM Algorithm">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ADMM</span>
+                        <span class="hidden-mobile">ADMM Algorithm</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -381,8 +405,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/01/SLIC/" title="SLIC算法">
-                        <span class="hidden-mobile">SLIC算法</span>
+                      <a href="/2025/02/01/SLIC/" title="SLIC Algorithm">
+                        <span class="hidden-mobile">SLIC Algorithm</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -393,6 +417,50 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"lyklbw/blog_comments","repo-id":"R_kgDOORV2Ag","category":"General","category-id":"DIC_kwDOORV2As4ConsK","theme":"dark_high_contrast","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
@@ -467,6 +535,10 @@
 
   <footer>
     <div class="footer-inner">
+  
+    <div class="footer-content">
+      <div> <span id="timeDate" class="runtime-days">载入天数...</span> <span id="times" class="runtime-time">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+    </div>
   
   
   
@@ -655,7 +727,13 @@
 
   <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
+  <script defer src="/js/leancloud.js" ></script>
 
+
+
+
+  
+<script src="/js/DynamicLine.js"></script>
 
 
 

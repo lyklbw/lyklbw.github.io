@@ -19,39 +19,22 @@
   <meta name="author" content="lyklbw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录关于合成孔径干涉辐射计的RFI定位与mitigation环节的学习与思考">
+    <meta name="description" content="Paper Notes  本文记录在论文书写时遇到的一些小问题以及需要注意的事项。 使用 pdflatex 进行编译 , 依照 IEEE tran 模板进行排版  miscellaneous  关于引用  使用的是 the thebibliography 进行的管理 没有使用bibtex 感觉引用的量不是很大 theb 足够做管理了  进行引用 如果要连续引用，在导言区加入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SAIR">
-<meta property="og:url" content="http://lyklbw.github.io/2025/04/07/SAIR/index.html">
+<meta property="og:title" content="Paper_Notes">
+<meta property="og:url" content="http://lyklbw.github.io/2025/05/10/Paper-Notes/index.html">
 <meta property="og:site_name" content="lyklbw&#39;s blog">
-<meta property="og:description" content="记录关于合成孔径干涉辐射计的RFI定位与mitigation环节的学习与思考">
+<meta property="og:description" content="Paper Notes  本文记录在论文书写时遇到的一些小问题以及需要注意的事项。 使用 pdflatex 进行编译 , 依照 IEEE tran 模板进行排版  miscellaneous  关于引用  使用的是 the thebibliography 进行的管理 没有使用bibtex 感觉引用的量不是很大 theb 足够做管理了  进行引用 如果要连续引用，在导言区加入">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-7.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-8.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-9.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-10.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-11.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-1.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-2.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-3.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-4.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-5.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-6.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-13.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-15.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-16.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-17.png">
-<meta property="og:image" content="http://lyklbw.github.io/img/image-18.png">
-<meta property="article:published_time" content="2025-04-07T08:28:26.000Z">
-<meta property="article:modified_time" content="2025-04-29T00:16:39.955Z">
+<meta property="article:published_time" content="2025-05-10T06:45:43.000Z">
+<meta property="article:modified_time" content="2025-07-13T06:41:36.711Z">
 <meta property="article:author" content="lyklbw">
-<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Accumulation">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://lyklbw.github.io/img/image-7.png">
   
   
   
-  <title>SAIR - lyklbw&#39;s blog</title>
+  <title>Paper_Notes - lyklbw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SAIR"></span>
+            <span id="subtitle" data-typed-text="Paper_Notes"></span>
           
         </div>
 
@@ -226,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-07 16:28" pubdate>
-          2025年4月7日 下午
+        <time datetime="2025-05-10 14:45" pubdate>
+          2025年5月10日 下午
         </time>
       </span>
     
@@ -238,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          549 字
+          114 字
         
       </span>
     
@@ -249,7 +232,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -295,58 +278,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">SAIR</h1>
+            <h1 id="seo-header">Paper_Notes</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="文章思路">1.文章思路</h3>
-<h4 id="principles-of-interferometric-radiometry">1.1Principles of
-Interferometric Radiometry</h4>
-<hr />
-<p><strong>干涉式辐射测量（Interferometric
-Radiometry）是一种通过测量天线之间的相关性来获取目标亮度温度（Brightness
-Temperature, BT）分布的技术。其核心是可见性函数（Visibility
-Function），它表示两个天线之间的相关输出。</strong></p>
-<p>我们需要指出的是，干涉式辐射计的得到的可见性函数<span
-class="math inline">\(V(u,v)\)</span>,而真正能让人看懂的是BT分布<span
-class="math inline">\(T_b(u,v)\)</span>,两者之间需要转化，他们有如下关系：
-<img src="/img/image-7.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-8.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-9.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-10.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-11.png" srcset="/img/loading.gif" lazyload /></p>
-<p>现在我们得到了<span class="math inline">\(V\)</span>与<span
-class="math inline">\(T\)</span>之间的关系</p>
-<p>这里补充对于<span class="math inline">\(V(u,v)\)</span>的理解，<span
-class="math inline">\((u,v)\)</span>为基线坐标，可以理解为空间频率
-基线越长（即 <span class="math inline">\(u,v\)</span> 越大） →
-干涉条纹越密集 → 能分辨更小的角度变化（即更高分辨率） <img
-src="/img/image-14.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="rfi-源协方差矩阵的建立">1.2 RFI 源协方差矩阵的建立</h4>
-<p><img src="/img/image-1.png" srcset="/img/loading.gif" lazyload /></p>
-<p>这个模型是如何建立的呢</p>
-<p><img src="/img/image-2.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-3.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-4.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-5.png" srcset="/img/loading.gif" lazyload /></p>
-<p>现在我们建立了天线阵列的基本接收模型，但是干涉辐射测量中，我们得到的是RFI源的协方差矩阵，而不是接收模型中的接收信号。</p>
-<p><img src="/img/image-6.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-13.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="稀疏和低秩特性的分析">1.3 稀疏和低秩特性的分析</h4>
-<p>这里我们使用主成分分析的角度来分析干涉辐射测量得到的协方差矩阵的特性</p>
-<p><img src="/img/image-15.png" srcset="/img/loading.gif" lazyload /></p>
-<p>自然场景（如土壤、海洋）的亮度温度（BT）在空间上变化缓慢，其能量主要集中在低频频谱。根据压缩感知理论，若信号能量集中在少量成分中，则该信号具有稀疏性，下面是量化</p>
-<p><img src="/img/image-16.png" srcset="/img/loading.gif" lazyload /></p>
-<p>同样可以证明基于SMOS卫星受RFI污染的协方差矩阵数据（图2）：特征值曲线快速下降后趋于平缓，表明大部分能量集中在少数主成分中。证实了RFI协方差矩阵的低秩特性</p>
-<p><img src="/img/image-17.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="/img/image-18.png" srcset="/img/loading.gif" lazyload /></p>
-<p>这里对范数进行补充： <a href="/2025/04/07/norm/">跳转到 norm
-的介绍</a></p>
-<p>在本文中核范数用来约束矩阵的秩，促使其低秩化。核范数是矩阵奇异值之和，表示矩阵的秩。</p>
-<p>而<span
-class="math inline">\(L1\)</span>范数用来约束矩阵的稀疏性，促使其稀疏化。<span
-class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
+                <h1 id="paper-notes">Paper Notes</h1>
+<blockquote>
+<p>本文记录在论文书写时遇到的一些小问题以及需要注意的事项。 使用
+pdflatex 进行编译 , 依照 IEEE tran 模板进行排版</p>
+</blockquote>
+<h2 id="miscellaneous">miscellaneous</h2>
+<ol type="1">
+<li>关于引用</li>
+</ol>
+<p>使用的是 the thebibliography 进行的管理 没有使用bibtex
+感觉引用的量不是很大 theb 足够做管理了</p>
+<p> 进行引用 如果要连续引用，在导言区加入 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>[numbers,sort<span class="hljs-built_in">&amp;</span>compress]&#123;natbib&#125;<br></code></pre></td></tr></table></figure> 就可以实现
+[1]-[3] 的引用了</p>
 
                 
               </div>
@@ -365,22 +314,8 @@ class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
+  <a href="/categories/Accumulation/" class="category-chain-item">Accumulation</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Algorithm/RFI/" class="category-chain-item">RFI</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Algorithm/RFI/Mitigation/" class="category-chain-item">Mitigation</a>
-  
-  
-
-  
-
   
 
       </span>
@@ -394,7 +329,7 @@ class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Algorithm/" class="print-no-link">#Algorithm</a>
+        <a href="/tags/Accumulation/" class="print-no-link">#Accumulation</a>
       
     </div>
   
@@ -406,8 +341,8 @@ class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SAIR</div>
-      <div>http://lyklbw.github.io/2025/04/07/SAIR/</div>
+      <div>Paper_Notes</div>
+      <div>http://lyklbw.github.io/2025/05/10/Paper-Notes/</div>
     </div>
     <div class="license-meta">
       
@@ -419,7 +354,7 @@ class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月7日</div>
+          <div>2025年5月10日</div>
         </div>
       
       
@@ -451,18 +386,12 @@ class="math inline">\(L1\)</span>范数是矩阵元素绝对值之和</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/10/Paper-Notes/" title="Paper_Notes">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Paper_Notes</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/07/norm/" title="Norm">
-                        <span class="hidden-mobile">Norm</span>
+                      <a href="/2025/04/07/SAIR/" title="SAIR">
+                        <span class="hidden-mobile">SAIR</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

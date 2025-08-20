@@ -1,12 +1,12 @@
-## **wandb配置**
+## wandb配置
 > *本文纯纯记录自己的愚蠢*
 
-### mac
+### 1.mac
 > *具体环境 macos  python3.9.6  wandb,version 0.21.0*
 
 确实是很久没用mac写python了，实习的时候都是用的win学习的，所以犯了一些很蠢的问题，
 
-#### **关于pip**
+#### 1.1关于pip
 
 我人都傻了，我之前明明用过 *pip* 啊，本人感觉非常非常奇怪🤔
 ```zsh
@@ -64,7 +64,7 @@ python -m venv myenv  # 创建名为.venv的虚拟环境
 
 
 
-#### 关于代理
+#### 1.2关于代理
 ```zsh
 #查看代理
 echo $http_proxy
@@ -78,7 +78,7 @@ unset https_proxy
 
 ```
 
-### 使用wandb
+### 2.使用wandb
 > 刚开始浪费很多时间，而且以为只能先离线训练再上传实则不然
 ```zsh
 #在训练文件中，设置环境变量

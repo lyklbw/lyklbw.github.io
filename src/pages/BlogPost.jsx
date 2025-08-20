@@ -10,6 +10,7 @@ export default function BlogPost() {
   const [content, setContent] = useState('');
 
   const blogContentRef = useRef(null);
+  const [tocItems, setTocItems] = useState([]);
 
   useEffect(() => {
     fetch(`/src/blogs/${category}/${slug}.md`)
@@ -74,8 +75,109 @@ export default function BlogPost() {
     }, 1200);
   }, []);
 
+  // 简单的 slug 生成函数（支持中英文与数字），保持稳定、可读
+  const slugify = useCallback((inputText) => {
+    if (!inputText) return '';
+    const normalized = String(inputText)
+      .toLowerCase()
+      // 去掉 HTML 标签
+      .replace(/<[^>]*>/g, '')
+      // 链接与图片的文字保留
+      .replace(/!\[[^\]]*\]\([^\)]*\)/g, '')
+      .replace(/\[[^\]]*\]\([^\)]*\)/g, (m) => m.replace(/^\[|\]\([^\)]*\)$/g, ''))
+      // 去掉行内代码与强调符号
+      .replace(/`+/g, '')
+      .replace(/[\*_|~]/g, '')
+      // 保留中英文、数字、空白与短横，避免使用 Unicode 属性在部分环境不兼容
+      .replace(/[^a-z0-9\u4e00-\u9fa5\s-]/gi, '')
+      .trim()
+      .replace(/\s+/g, '-');
+    return normalized;
+  }, []);
+
+  // 渲染后从 DOM 生成 TOC，并赋予标题稳定 id
+  useEffect(() => {
+    const buildTocFromDom = () => {
+      const container = blogContentRef.current;
+      if (!container) return;
+      const headings = container.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      const counts = {};
+      const items = [];
+      headings.forEach((el) => {
+        const text = (el.textContent || '').trim();
+        const base = slugify(text);
+        if (!base) return;
+        const c = counts[base] || 0;
+        const id = c === 0 ? base : `${base}-${c}`;
+        counts[base] = c + 1;
+        el.id = id;
+        const depth = Number(el.tagName.replace('H', ''));
+        items.push({ depth, text, slug: id });
+      });
+      setTocItems(items);
+    };
+    const id = requestAnimationFrame(buildTocFromDom);
+    return () => cancelAnimationFrame(id);
+  }, [content, slugify]);
+
+  // 处理 hash 跳转（页面加载或点击 TOC）
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = decodeURIComponent(window.location.hash || '').replace(/^#/, '');
+      if (!hash) return;
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    // 初始渲染后尝试一次
+    const id = requestAnimationFrame(scrollToHash);
+    // 监听 hash 变化
+    const onHashChange = () => scrollToHash();
+    window.addEventListener('hashchange', onHashChange);
+    return () => {
+      cancelAnimationFrame(id);
+      window.removeEventListener('hashchange', onHashChange);
+    };
+  }, [tocItems]);
+  
+
   return (
     <div className="blog-post" ref={blogContentRef}>
+      {tocItems.length > 0 && (
+        <nav
+          aria-label="文章目录"
+          style={{
+            backgroundColor: '#fff',
+            border: '1px solid #eee',
+            borderRadius: 8,
+            padding: '12px 16px',
+            marginBottom: 16,
+          }}
+        >
+          <div style={{ fontWeight: 'bold', marginBottom: 8 }}>目录</div>
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            {tocItems.map((item, idx) => (
+              <li key={`${item.slug}-${idx}`} style={{ margin: '4px 0', paddingLeft: (item.depth - 1) * 12 }}>
+                <a
+                  href={`#${item.slug}`}
+                  style={{ textDecoration: 'none', color: '#5F4B3B' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.getElementById(item.slug);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      history.replaceState(null, '', `#${encodeURIComponent(item.slug)}`);
+                    }
+                  }}
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
       <ReactMarkdown
         children={content}
         rehypePlugins={[rehypeRaw]}

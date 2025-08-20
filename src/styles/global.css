@@ -1,0 +1,319 @@
+body {
+  background: #FAF3DD;
+  margin: 0;
+  color: #222;
+  font-family: 'Noto Serif SC', 'SimSun', '宋体', 'Source Han Serif SC', 'STSong', serif;
+}
+
+/* 标题、姓名、教育经历、科研与访学等 */
+h1, h2, h3, h4, h5, h6,
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card [data-section="name"],
+.card [data-section="education"],
+.card [data-section="research"] {
+  font-family: 'Noto Serif SC', 'SimSun', '宋体', 'Source Han Serif SC', 'STSong', serif !important;
+  font-weight: normal !important;
+}
+
+/* 中文标题 */
+h1:lang(en), h2:lang(en), h3:lang(en), h4:lang(en), h5:lang(en), h6:lang(en) {
+  font-family: Arial, 'Microsoft YaHei', sans-serif;
+}
+
+/* 中文正文 */
+p, li, span, div {
+  font-family: 'SimSun', '宋体', serif;
+}
+
+/* 英文正文 */
+p:lang(en), li:lang(en), span:lang(en), div:lang(en) {
+  font-family: Georgia, 'SimSun', serif;
+}
+
+/* 美化按钮和导航 */
+button {
+  background: #FAF3DD;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #FFE4B5;
+}
+nav a, a {
+  color: #5F4B3B;
+  text-decoration: underline !important;
+  font-weight: bold;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+nav a:hover, a:hover {
+  color: #3E2F20;
+}
+
+/* 卡片样式 */
+.card {
+  background: #fffbe6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.section-title {
+  text-align: left;
+  padding-left: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #5F4B3B;
+  border-left: 3px solid #5F4B3B;
+  padding-left: 16px;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 32px;
+  margin-bottom: 16px;
+  padding-left: 4vw;
+}
+.avatar-img {
+  margin-left: 2vw;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .section-title {
+    padding-left: 16px;
+    text-align: left;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .profile-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-left: 0;
+    text-align: center;
+  }
+  .avatar-img {
+    margin-left: 0 !important;
+    margin-top: 0;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 12px;
+    margin: 12px 0;
+  }
+  .section-title {
+    font-size: 1.3em;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    padding-left: 12px;
+  }
+  
+  /* 小屏幕下的模块样式调整 */
+  .card > div > div > div {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  
+  .card > div > div > div > img {
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .card > div > div > div > div {
+    text-align: center !important;
+  }
+}
+
+/* 博客列表页面的响应式样式 */
+@media (max-width: 768px) {
+  /* 博客分类导航在小屏幕下垂直排列 */
+  .card > div > div:first-child > div {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .card > div > div:first-child > div > a {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* 博客列表项在小屏幕下垂直排列 */
+  .card > div > ul > li {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  .card > div > ul > li > div {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+} 
+
+/* 代码块美化 */
+.markdown-body pre {
+  background: #23272e !important;
+  color: #f8f8f2 !important;
+  border-radius: 8px;
+  padding: 8px;
+  overflow-x: auto;
+  position: relative;
+  margin: 8px 0;
+  font-size: 1em;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.markdown-body code {
+  background: none !important;
+  color: inherit !important;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+  font-size: 1em;
+  border-radius: 4px;
+  padding: 0;
+}
+
+/* 引用块样式 */
+.markdown-body blockquote {
+  background: #f8f9fa;
+  border-left: 4px solid #5f4b3b;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-style: italic;
+  color: #555;
+  position: relative;
+}
+
+.markdown-body blockquote::before {
+  content: '"';
+  font-size: 3em;
+  color: #5f4b3b;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  opacity: 0.3;
+  font-family: Georgia, serif;
+}
+
+.markdown-body blockquote p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 自定义引用块样式 */
+.custom-blockquote {
+  transition: all 0.3s ease;
+}
+
+.custom-blockquote:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+}
+
+.custom-blockquote p {
+  margin: 0;
+  padding-left: 8px;
+}
+
+/* 响应式引用块 */
+@media (max-width: 768px) {
+  .custom-blockquote {
+    padding: 12px 16px !important;
+    margin: 16px 0 !important;
+    font-size: 0.9em !important;
+  }
+}
+
+/* 语法高亮器样式覆盖 */
+.markdown-body .react-syntax-highlighter-line-number {
+  color: #6a737d !important;
+}
+
+.markdown-body pre[class*="language-"] {
+  background: #23272e !important;
+  border-radius: 8px !important;
+  margin: 8px 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* 确保语法高亮器正确显示 */
+.markdown-body .react-syntax-highlighter {
+  background: #23272e !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Menlo', monospace !important;
+  font-size: 0.9em !important;
+  line-height: 1.5 !important;
+}
+
+.markdown-body .react-syntax-highlighter pre {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
+
+/* 统一代码块样式 */
+.markdown-body code {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Menlo', monospace !important;
+  font-size: 0.9em !important;
+}
+
+/* 内联代码样式 */
+.markdown-body code:not(pre code) {
+  background: #f1f3f4 !important;
+  color: #d73a49 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  background: #ffe4b5;
+  color: #5f4b3b;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: background 0.2s, opacity 0.2s;
+  z-index: 10;
+  font-weight: 500;
+}
+.copy-btn:hover {
+  background: #fae0a4;
+  opacity: 1;
+} 
+

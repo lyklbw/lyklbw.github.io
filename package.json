@@ -10,6 +10,7 @@
         "deploy": "gh-pages -d dist"
     },
     "dependencies": {
+        "bibtex-parse-js": "^0.0.24",
         "gray-matter": "^4.0.3",
         "i18next": "^23.0.0",
         "katex": "^0.16.22",

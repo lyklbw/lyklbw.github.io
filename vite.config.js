@@ -38,14 +38,59 @@ function copyMarkdownFiles() {
   };
 }
 
+// 开发模式下的markdown文件监听插件
+function watchMarkdownFiles() {
+  return {
+    name: 'watch-markdown-files',
+    configureServer(server) {
+      // 监听markdown文件变化
+      const blogsDir = resolve(__dirname, 'src/blogs');
+      
+      const watchMarkdown = (dir) => {
+        const files = fs.readdirSync(dir);
+        files.forEach(file => {
+          const filePath = resolve(dir, file);
+          const stat = fs.statSync(filePath);
+          
+          if (stat.isDirectory()) {
+            watchMarkdown(filePath);
+          } else if (file.endsWith('.md')) {
+            // 监听单个markdown文件变化
+            fs.watchFile(filePath, (curr, prev) => {
+              if (curr.mtime !== prev.mtime) {
+                console.log(`Markdown file changed: ${filePath}`);
+                // 触发客户端刷新
+                server.ws.send({
+                  type: 'full-reload',
+                  path: '*'
+                });
+              }
+            });
+          }
+        });
+      };
+      
+      if (fs.existsSync(blogsDir)) {
+        watchMarkdown(blogsDir);
+        console.log('Markdown file watching enabled');
+      }
+    }
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
-    copyMarkdownFiles()
+    copyMarkdownFiles(),
+    watchMarkdownFiles()
   ],
   base: '/', // 用户主页仓库使用根路径
   server: {
     open: true,
+    watch: {
+      // 确保监听所有文件类型
+      ignored: ['!**/*.md']
+    }
   },
   assetsInclude: ['**/*.md']
 }); 

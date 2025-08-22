@@ -1,6 +1,6 @@
 ## Neural_Recevier 
 
-> 本篇文章内容主题为3GPP release 18 New Topics中的Artificial Intelligence (AI)/Machine Learning (ML)的相关知识，内容包含通信理论的部分补充以及AI for Wireless中Neural Receiver的介绍。
+> 本篇文章内基于3GPP release 18 New Topics中的Artificial Intelligence (AI)/Machine Learning (ML)的主题，内容包含此场景下通信理论的部分补充以及AI for Wireless中Neural Receiver的介绍。
 
 ### 1.OFDM 系统
 
@@ -16,7 +16,7 @@
 3. 在接收端，（不考虑射频部分的接收）我们先去除掉循环前缀，进行FFT获得频域信息，这里分为两个大的部分，首先接收方会提取DMRS进行信道的估计，之后对整个原始信道估计进行插值，填充整个时隙网络，在这之后使用插值之后的信道估计对符号进行均衡（例如LMMSE均衡器），均衡后的符号会被送入解映射器，输出软比特或者对数似然比（LLR），LDPC译码之后就得到了预估比特流
 整个流程还是非常清晰的，但是有一些小的细节和工程上的知识，在下面的补充中介绍
 
-关于LDPC编码的详细理论，可以参考相关文献[@gallager1962low, @mackay1996near]。在5G NR系统中，OFDM技术的应用已经相当成熟[@dahlman2018nr]。
+关于LDPC编码的详细理论，可以参考相关文献与博客。在5G NR系统中，OFDM技术的应用已经相当成熟。
 
 ---
 补充：
@@ -24,7 +24,12 @@
 2. 5G NR中 每个帧（frame）包含10个子帧，每个子帧维持1ms，每个子帧都被划分为时隙（slot），每个时隙包含14个OFDM符号，当调度了PDSCH或者PUSCH时会插入DMRS，可能DMRS就被配置在第四个OFDM符号上。时隙的长度取决于子载波间隔为： $T_{\text{slot}} = \frac{1 \, \text{ms}}{2\mu}$，这里的$\mu$越大，子载波间隔也就越大。
 3. Transmission Time Interval（TTI） 在5G中可以时slot级别的也可以时mini-slot级别的，表示调度/传输的基本时间
 4. Physical Resource Block 是频域资源调度的单位 一般是12个连续的子载波 一个时隙一般包含 12x14=168个Resource Elements
+5. 信道估计的常见算法有LS、MMSE，我们在估计信道时还需要考虑导频开销以及效率的tradeoff；关于信道均衡则可以理解成对于信道抽样的插值恢复，本质都是信道计算的一部份。
+6. 当然在基站接收了信号，会通过下行控制信道（PDCCH）向UE发送HARQ反馈（ACK/NACK）告知通信是否成功。
+7. 无线环境中多径效应是如何仿真的？抽头延迟线（TDL）和通过簇延迟线（CDL）信道模型，其中前者
+
 ---
+图片补充：
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
     <img src="/images/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
@@ -33,6 +38,8 @@
 </div>
 ps:The considered DMRS/pilot configurations, illustrated for one PRB over the duration of a TTI. Note that in the forthcoming results the pilot
 configurations are only differentiated in terms of how many OFDM symbols they utilize
+
+---
 
 #### 1.2 Neural Receiver
 > Neural Receiver的发展情况，编年史形式
@@ -45,7 +52,28 @@ configurations are only differentiated in terms of how many OFDM symbols they ut
 > 非常碎碎念的记录，并不是很工整
 #### 2.1 DeepRx: Fully Convolutional Deep Learning Receiver (Bell Labs 2020)
 > 本文接收于通信顶顶刊TWC，重点关注其在Wireless Communication上的贡献
-> 理清楚文章的
+> 理清楚文章的主要思路 并提炼出核心创新点 以及对论文阅读总结心得
+1. abstract
+单看abstract最重要的信息无非以下几点
+* 目前的无线电系统以及有了充分的理解以及行业认定的最优算法，与其对每个模块进行优化，不如对一个较为完整的系统进行整体优化
+* 本文提出了一个 Deep Fully Convolutional Neural Networks,DeepRx实现了由频域信号到未编码比特流的信号处理，符合5G通信标准。
+
+2. introduction
+> related work and intro
+
+从第一性原理出发：整个网络级别应用的性能基础是物理层的处理方式，本文的目标是通过机器学习在物理层发掘增益
+通过related work 我们可以得知 常用的baseline包括 基于最小均方误差的MMSE传统接收机、基于线性最小二乘的接收机、基于MMSE的接收机和具有完美信道知识的理想辅助接收机。
+
+在本篇文章中，第一个非常impressive的工作和点在于：**通过精心设计神经网络架构及其输入，可以实现更高的性能提升，但是允许神经网络利用未知数据符号及其分布来提高信道估计精度，能获得最大的增益**
+
+本篇文章的主要贡献与工作：
+* 性能最优接收机，从频域天线数据出发，完成了信道估计、均衡、软解映射
+* 可以利用接收的数据符号与其分布，其所使用的训练方法帮助其很好的应对了非高斯噪声
+
+3. System Model 
+
+
+
 
 #### 2.2 A Neural Receiver for 5G NR Multi-user MIMO (NVIDA 2023)
 

@@ -7,7 +7,7 @@
         "build": "vite build",
         "preview": "vite preview",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d dist -r origin-pages"
+        "deploy": "gh-pages -d dist -r origin"
     },
     "dependencies": {
         "bibtex-parse-js": "^0.0.24",

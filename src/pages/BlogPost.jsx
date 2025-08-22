@@ -8,6 +8,8 @@ import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 export default function BlogPost() {
   const { category, slug } = useParams();
   const [content, setContent] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [touchStart, setTouchStart] = useState(null);
 
   const blogContentRef = useRef(null);
   const [tocItems, setTocItems] = useState([]);
@@ -141,6 +143,55 @@ export default function BlogPost() {
     };
   }, [tocItems]);
   
+  // 触摸事件处理函数
+  const handleTouchStart = (e) => {
+    setTouchStart({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    if (!touchStart) return;
+    
+    const touchEnd = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    };
+    
+    const deltaX = touchEnd.x - touchStart.x;
+    const deltaY = touchEnd.y - touchStart.y;
+    
+    // 如果垂直滑动距离大于水平滑动距离，且超过50px，则关闭图片
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+      setSelectedImage(null);
+      setTouchStart(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStart(null);
+  };
+
+  // 键盘事件处理
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedImage) {
+        setSelectedImage(null);
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      // 禁用页面滚动
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
 
   return (
     <div className="blog-post" ref={blogContentRef}>
@@ -182,6 +233,60 @@ export default function BlogPost() {
         children={content}
         rehypePlugins={[rehypeRaw]}
         components={{
+          img({ node, src, alt, ...props }) {
+            return (
+              <div style={{ 
+                textAlign: 'center', 
+                margin: '16px 0',
+                position: 'relative'
+              }}>
+                <img
+                  src={src}
+                  alt={alt}
+                  style={{
+                    maxWidth: '100%',
+                    height: 'auto',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setSelectedImage({ src, alt })}
+                  onLoad={(e) => {
+                    // 图片加载完成后添加加载完成样式
+                    e.target.style.opacity = '1';
+                  }}
+                  onError={(e) => {
+                    // 图片加载失败时显示错误信息
+                    e.target.style.display = 'none';
+                    const errorDiv = e.target.nextSibling;
+                    if (errorDiv) {
+                      errorDiv.style.display = 'block';
+                    }
+                  }}
+                  {...props}
+                />
+                {alt && (
+                  <div style={{
+                    marginTop: '8px',
+                    fontSize: '0.9em',
+                    color: '#666',
+                    fontStyle: 'italic'
+                  }}>
+                    {alt}
+                  </div>
+                )}
+                <div style={{
+                  display: 'none',
+                  color: '#999',
+                  fontSize: '0.9em',
+                  fontStyle: 'italic'
+                }}>
+                  图片加载失败
+                </div>
+              </div>
+            );
+          },
           blockquote({ node, children, ...props }) {
             return (
               <div className="custom-blockquote" style={{
@@ -283,6 +388,78 @@ export default function BlogPost() {
           }
         }}
       />
+      
+      {/* 图片查看模态框 */}
+      {selectedImage && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            padding: '20px'
+          }}
+          onClick={() => setSelectedImage(null)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh' }}>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain',
+                borderRadius: '8px'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+            {selectedImage.alt && (
+              <div style={{
+                position: 'absolute',
+                bottom: '-40px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                color: 'white',
+                fontSize: '14px',
+                textAlign: 'center',
+                maxWidth: '80vw'
+              }}>
+                {selectedImage.alt}
+              </div>
+            )}
+            <button
+              style={{
+                position: 'absolute',
+                top: '-50px',
+                right: '0',
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                fontSize: '24px',
+                cursor: 'pointer',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onClick={() => setSelectedImage(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -317,3 +317,93 @@ nav a:hover, a:hover {
   opacity: 1;
 } 
 
+/* 响应式图片样式 */
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 16px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  /* 确保图片在高分辨率屏幕上清晰显示 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.blog-post img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* 移动端图片优化 */
+@media (max-width: 768px) {
+  .blog-post img {
+    margin: 12px auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* 移动端禁用hover效果，改为触摸友好的交互 */
+    transition: none;
+    /* 移动端优化触摸体验 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .blog-post img:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  .blog-post img:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post img {
+    margin: 8px auto;
+    border-radius: 4px;
+    /* 小屏幕下进一步优化间距 */
+    margin-left: 8px;
+    margin-right: 8px;
+    /* 确保图片在小屏幕上不会过小 */
+    min-width: 200px;
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .blog-post img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* 确保所有markdown中的图片都响应式 */
+.markdown-body img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 16px auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+@media (max-width: 768px) {
+  .markdown-body img {
+    margin: 12px auto !important;
+    border-radius: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-body img {
+    margin: 8px auto !important;
+    border-radius: 4px !important;
+  }
+} 
+

@@ -71,8 +71,7 @@ configurations are only differentiated in terms of how many OFDM symbols they ut
 * 可以利用接收的数据符号与其分布，其所使用的训练方法帮助其很好的应对了非高斯噪声
 
 3. System Model 
-> 基于卷积神经网络的接收机
-
+> 基于卷积神经网络的接收机.
 
 
 

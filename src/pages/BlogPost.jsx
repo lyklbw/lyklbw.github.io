@@ -13,15 +13,20 @@ export default function BlogPost() {
   const [tocItems, setTocItems] = useState([]);
 
   useEffect(() => {
-    fetch(`/src/blogs/${category}/${slug}.md`)
-      .then(response => response.text())
-      .then(text => {
-        setContent(text);
-      })
-      .catch(error => {
-        console.error('Error loading markdown file:', error);
-        setContent('# 文件加载失败\n\n抱歉，无法加载此博客文章。');
-      });
+    const modules = import.meta.glob('/src/blogs/**/*.md', { as: 'raw' });
+    const key = `/src/blogs/${category}/${slug}.md`;
+    const loader = modules[key];
+    if (loader) {
+      loader()
+        .then((text) => setContent(text))
+        .catch((error) => {
+          console.error('Error loading markdown file:', error);
+          setContent('# 文件加载失败\n\n抱歉，无法加载此博客文章。');
+        });
+    } else {
+      console.error('Markdown file not found via glob:', key);
+      setContent('# 文件未找到\n\n抱歉，无法加载此博客文章。');
+    }
   }, [category, slug]);
 
   // 使用MathJax渲染LaTeX公式

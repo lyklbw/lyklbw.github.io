@@ -25,6 +25,14 @@
 3. Transmission Time Interval（TTI） 在5G中可以时slot级别的也可以时mini-slot级别的，表示调度/传输的基本时间
 4. Physical Resource Block 是频域资源调度的单位 一般是12个连续的子载波 一个时隙一般包含 12x14=168个Resource Elements
 ---
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
+  <div style="flex: 1; text-align: center;">
+    <img src="/images/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
+    <span style="display: block; text-align: center; color: #888;">DMRS图解</span>
+  </div>
+</div>
+ps:The considered DMRS/pilot configurations, illustrated for one PRB over the duration of a TTI. Note that in the forthcoming results the pilot
+configurations are only differentiated in terms of how many OFDM symbols they utilize
 
 #### 1.2 Neural Receiver
 > Neural Receiver的发展情况，编年史形式
@@ -36,17 +44,14 @@
 ### 2.现有的方案
 > 非常碎碎念的记录，并不是很工整
 #### 2.1 DeepRx: Fully Convolutional Deep Learning Receiver (Bell Labs 2020)
-流水账记录：
-无线电系统被充分理解，许多任务也已经有了对应的最优算法。与通过学习接收机的各个部分相比，更好的方法是对整个接收机部分进行联合学习，这是一个非线性的复杂问题，最优解难以实现，本文的目的是介绍了一种深度全卷积神经网络实现频域信号到未编码比特的接收机部分的替代。
-
-第一性原理看待问题：网络级别的性能基础在于物理层的处理方式，在物理层挖掘未能被发掘的增益是不二选择。
-开发基于数据驱动的深度神经网络接收机确实可以提高未来无线电系统的性能。然而，允许神经网络利用未知数据符号及其分布来提高信道估计精度，能获得最大的增益。
-
-本文还考虑了标准的规范性：为了使学习到的接收机达到 5G 合规性，它们必须支持 NR 规范中包含的各种不同的解调参考信号（DMRS）或导频配置。此外，接收机的输出必须由低密度奇偶校验（LDPC）解码器解码，这意味着神经网络必须能够估计每个调制阶数下每个接收比特的不确定性。因此，需要灵活的基于深度学习的接收机解决方案，能够在单个实现中处理所有不同的参考信号配置和调制方案，同时与其他处理阶段兼容
-
-神经
+> 本文接收于通信顶顶刊TWC，重点关注其在Wireless Communication上的贡献
+> 理清楚文章的
 
 #### 2.2 A Neural Receiver for 5G NR Multi-user MIMO (NVIDA 2023)
+
+
+
+
 #### 2.3 Design of a Standard-Compliant Real-Time Neural Receiver for 5G NR (NVIDA 2024)
 
 

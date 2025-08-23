@@ -80,10 +80,7 @@ configurations are only differentiated in terms of how many OFDM symbols they ut
 需要注意的是导频的位置其实是不固定的，因为其可以有多种配置，要使单个网络可以在多个导频配置下运行，要在训练期间尽可能呈现这些配置
 
 
-有一个很奇怪的想法，可以作为最后的一个提问
-关于neural receiver如何商用
-例如 wifi和5G集成到一个neural receiver上 实现内存的优化与性能的提升。。
-研究的重点变成不同帧结构，同一技术
+
 
 
 #### 2.2 A Neural Receiver for 5G NR Multi-user MIMO (NVIDA 2023)

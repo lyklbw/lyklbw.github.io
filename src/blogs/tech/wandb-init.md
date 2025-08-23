@@ -109,4 +109,6 @@ os.environ["WANDB_MODE"]="offline"
 WANDB_BASE_URL=https://api.bandw.top wandb sync  ./wandb/offline-run-20250729_210116-wds9z56w 
 #ps:换成online依旧正常工作
 ```
-
+### 3.使用git
+之后使用branch管理每一次的大的博客更新
+小的更新就在本地commit，每写完一次文章push一次吧

@@ -63,7 +63,6 @@ python -m venv myenv  # 创建名为.venv的虚拟环境
 ```
 
 
-
 #### 1.2关于代理
 ```zsh
 #查看代理
@@ -75,7 +74,30 @@ export https_proxy=http://代理服务器IP:端口
 #取消代理（临时取消）
 unset http_proxy
 unset https_proxy
+```
 
+#### 关于conda
+```zsh
+# 创建新环境（指定 Python 版本）
+conda create -n myenv python=3.9
+
+# 激活环境
+conda activate myenv
+
+# 退出当前环境
+conda deactivate
+
+# 删除环境
+conda remove -n myenv --all
+
+# 查看已创建的环境
+conda env list
+
+# 导出环境到 yml 文件
+conda env export > environment.yml
+
+# 根据 yml 文件创建环境
+conda env create -f environment.yml
 ```
 
 ### 2.使用wandb

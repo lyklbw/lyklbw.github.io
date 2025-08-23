@@ -112,3 +112,20 @@ WANDB_BASE_URL=https://api.bandw.top wandb sync  ./wandb/offline-run-20250729_21
 ### 3.使用git
 之后使用branch管理每一次的大的博客更新
 小的更新就在本地commit，每写完一次文章push一次吧
+
+```
+# 切换到主分支
+git checkout main
+# 进入新的分支
+git switch -c new-branch-name
+# ... 编写代码 ...
+git add .          # 或 git add <file1> <file2>，将修改添加到暂存区
+git commit -m "提交说明：完成了某某功能" # 将更改提交到本地分支
+git push -u origin feature-awesome
+
+# 切换回主分支
+git checkout main
+# 将功能分支合并到当前分支（main）
+git merge feature-awesome
+# 将合并后的主分支推送到远程仓库，实现“远程保留主分支”
+git push origin main

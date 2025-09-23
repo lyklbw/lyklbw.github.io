@@ -142,3 +142,27 @@ git log --online
 %回退到某个旧版本,会丢失掉所有新修改
 git reset --hard <commit-hash> 
 ```
+
+#### 4.ipdb
+> python 调试工具
+
+1.打断点
+首先当然是打断点，虽然依旧需要在工程里面插入代码，但是总比print啥的要高效很多，
+```
+ipdb.set_trace()
+```
+打完断点之后，输出数据信息
+```
+p val1, val2, val3
+p val.shape
+```
+
+2.继续运行
+```
+#运行到下一行
+ipdb> n 
+#运行到下一个断点
+ipdb> c
+#退出
+ipdb> q
+```

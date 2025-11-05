@@ -1,4 +1,4 @@
-## wandb配置
+## 工具配置
 > *本文纯纯记录自己的愚蠢*
 
 ### 1.mac
@@ -113,6 +113,7 @@ WANDB_BASE_URL=https://api.bandw.top wandb sync  ./wandb/offline-run-20250729_21
 之后使用branch管理每一次的大的博客更新
 小的更新就在本地commit，每写完一次文章push一次吧
 
+#### 3.1分支管理
 ```
 # 切换到主分支
 git checkout main
@@ -129,3 +130,52 @@ git checkout main
 git merge feature-awesome
 # 将合并后的主分支推送到远程仓库，实现“远程保留主分支”
 git push origin main
+```
+
+#### 3.2版本管理
+
+```zsh
+%提交历史
+git log
+%提交历史简介版
+git log --online 
+%回退到某个旧版本,会丢失掉所有新修改
+git reset --hard <commit-hash> 
+```
+
+### 4.ipdb
+> python 调试工具
+
+1.打断点
+首先当然是打断点，虽然依旧需要在工程里面插入代码，但是总比print啥的要高效很多，
+```
+ipdb.set_trace()
+```
+打完断点之后，输出数据信息
+```
+p val1, val2, val3
+p val.shape
+```
+
+2.继续运行
+```
+#运行到下一行
+ipdb> n 
+#运行到下一个断点
+ipdb> c
+#退出
+ipdb> q
+```
+
+### oss
+> 解决autodl无法代理的问题
+
+思路：在美国下载的数据 通过小数据直接拖拽，大数据使用ossutil切片上传
+
+```zsh
+ossutil cp localaddress oss://bucketname
+```
+
+要配置AccessKeyId和AccessKeySecret
+
+服务器用curl通过url直接下载oss中的数据

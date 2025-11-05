@@ -40,7 +40,6 @@ const educations = [
 const blogs = [
   { category: 'reading', slug: 'neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, featured: false},
   { category: 'tech', slug: 'react-latex', title: { zh: 'React中支持LaTeX', en: 'LaTeX in React' }, featured: false},
-  { category: 'life', slug: 'my-story', title: { zh: '我的故事', en: 'My Story' }, featured: false },
   { category: 'reading', slug: 'book', title: { zh: '好书推荐', en: 'Book Recommendation' }, featured: true },
   { category: 'tech', slug: 'wandb-init', title: { zh: 'wandb的初始配置', en: 'wandb init' }, featured: false},
 ];

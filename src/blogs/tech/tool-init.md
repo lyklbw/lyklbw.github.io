@@ -1,4 +1,4 @@
-## wandb配置
+## 工具配置
 > *本文纯纯记录自己的愚蠢*
 
 ### 1.mac
@@ -143,7 +143,7 @@ git log --online
 git reset --hard <commit-hash> 
 ```
 
-#### 4.ipdb
+### 4.ipdb
 > python 调试工具
 
 1.打断点
@@ -166,3 +166,16 @@ ipdb> c
 #退出
 ipdb> q
 ```
+
+### oss
+> 解决autodl无法代理的问题
+
+思路：在美国下载的数据 通过小数据直接拖拽，大数据使用ossutil切片上传
+
+```zsh
+ossutil cp localaddress oss://bucketname
+```
+
+要配置AccessKeyId和AccessKeySecret
+
+服务器用curl通过url直接下载oss中的数据

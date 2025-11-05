@@ -6,9 +6,8 @@ import { useTranslation } from 'react-i18next';
 const blogs = [
   { category: 'reading',slug: 'MU-MIMO', title: { zh: 'MU-MIMO', en: 'MU-MIMO' }, date: '2025-08-27' },
   { category: 'reading',slug: 'neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
-  { category: 'tech', slug: 'wandb-init', title: { zh: 'wandb的初始配置', en: 'wandb Init' }, date: '2025-07-29' },
+  { category: 'tech', slug: 'tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
   { category: 'reading', slug: 'book', title: { zh: '好书推荐', en: 'Book Recommendation' }, date: '2025-07-15' },
-  { category: 'life', slug: 'my-story', title: { zh: '我的故事', en: 'My Story' }, date: '2024-05-20' },
   { category: 'tech', slug: 'react-latex', title: { zh: 'React中支持LaTeX', en: 'LaTeX in React' }, date: '2024-02-01' },
 ];
 

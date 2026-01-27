@@ -26,13 +26,17 @@ h1:lang(en), h2:lang(en), h3:lang(en), h4:lang(en), h5:lang(en), h6:lang(en) {
 }
 
 /* 中文正文 */
-p, li, span, div {
-  font-family: 'SimSun', '宋体', serif;
+p, li {
+  font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+  font-size: 12pt;
+  line-height: 1.5;
 }
 
 /* 英文正文 */
-p:lang(en), li:lang(en), span:lang(en), div:lang(en) {
-  font-family: Georgia, 'SimSun', serif;
+p:lang(en), li:lang(en) {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 12pt;
+  line-height: 1.5;
 }
 
 /* 美化按钮和导航 */

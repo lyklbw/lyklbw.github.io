@@ -2,13 +2,14 @@ import React, { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-// 示例博客数据，增加 date 字段（与 Home.jsx 保持同步）
+// 示例博客数据，增加 date 字段
 const blogs = [
+  { category: 'reading', slug: 'Read-DDPM', title: { zh: '扩散模型阅读', en: 'Reading DDPM' }, date: '2025-11-6' },
   { category: 'reading',slug: 'MU-MIMO', title: { zh: 'MU-MIMO', en: 'MU-MIMO' }, date: '2025-08-27' },
-  { category: 'reading',slug: 'neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
-  { category: 'tech', slug: 'tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
-  { category: 'reading', slug: 'book', title: { zh: '好书推荐', en: 'Book Recommendation' }, date: '2025-07-15' },
-  { category: 'tech', slug: 'react-latex', title: { zh: 'React中支持LaTeX', en: 'LaTeX in React' }, date: '2024-02-01' },
+  { category: 'reading',slug: 'Neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
+  { category: 'tech', slug: 'Tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
+  { category: 'reading', slug: 'Book', title: { zh: '阅读', en: 'Books to be read' }, date: '2025-07-15' },
+  //{ category: 'reading', slug: 'SAIR', title: { zh: '合成孔径干涉仪辐射计笔记', en: 'Synthetic Aperture Interferometry Radiometer Notes' }, date: '2025-12-22' }
 ];
 
 const categories = {

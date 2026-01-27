@@ -38,10 +38,6 @@ const educations = [
 ];
 
 const blogs = [
-  { category: 'reading', slug: 'neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, featured: false},
-  { category: 'tech', slug: 'react-latex', title: { zh: 'React中支持LaTeX', en: 'LaTeX in React' }, featured: false},
-  { category: 'reading', slug: 'book', title: { zh: '好书推荐', en: 'Book Recommendation' }, featured: true },
-  { category: 'tech', slug: 'wandb-init', title: { zh: 'wandb的初始配置', en: 'wandb init' }, featured: false},
 ];
 
 export default function Home() {
@@ -234,8 +230,8 @@ export default function Home() {
       </div>
 
       {/* 精选博客区块 */}
-      <div style={{ margin: '0 0 24px 0' }}>
-        <h2 className="section-title">{isZh ? '精选博客' : 'Featured Blogs'}</h2>
+      {/* <div style={{ margin: '0 0 24px 0' }}>
+        <h2 className="section-title">{isZh ? '最近博客' : 'Featured Blogs'}</h2>
         <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center', margin: '20px 0 0 0' }}>
           {blogs.filter(b => b.featured).map(blog => (
             <li key={blog.slug} style={{ width: '100%', textAlign: 'center' }}>
@@ -263,7 +259,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 } 

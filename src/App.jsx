@@ -27,7 +27,8 @@ function App() {
         <Route path="/blog/:category/:slug" element={<BlogPost />} />
       </Routes>
       <footer style={{ width: '100%', textAlign: 'center', margin: '24px 0 16px 0', fontFamily: 'Times New Roman, Times, serif', fontStyle: 'italic', fontSize: 18, color: '#5F4B3B', zIndex: 1, position: 'relative' }}>
-        stay hungry, stay foolish
+        stay hungry, stay foolish <br />
+        日拱一卒，功不唐捐
       </footer>
     </div>
   );

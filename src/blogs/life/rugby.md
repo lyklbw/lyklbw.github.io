@@ -1,9 +1,4 @@
-# 我的故事
-
-这是我的第一篇生活博客。(just for text)
-
-欢迎来到我的个人网站！
-
+# 英式橄榄球回忆
 
 <p align="center">
   <img src="/images/rugby1.jpg" alt="2023年华中科技大学橄榄球队球衣授予仪式" style="width: 300px; display: block; margin: 0 auto;" />

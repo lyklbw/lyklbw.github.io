@@ -9,6 +9,9 @@ const blogs = [
   { category: 'reading',slug: 'Neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
   { category: 'tech', slug: 'Tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
   { category: 'reading', slug: 'Book', title: { zh: '阅读', en: 'Books to be read' }, date: '2025-07-15' },
+  { category: 'life', slug: 'rugby', title: { zh: '英式橄榄球回忆', en: 'Rugby Memories'}, date: '2025-12-05' },
+  { category: 'reading', slug: 'Estimation-Theory', title: { zh: '优化估计理论笔记', en: 'Optimization Estimation Theory Notes' }, date: '2026-01-27' },
+  
   //{ category: 'reading', slug: 'SAIR', title: { zh: '合成孔径干涉仪辐射计笔记', en: 'Synthetic Aperture Interferometry Radiometer Notes' }, date: '2025-12-22' }
 ];
 

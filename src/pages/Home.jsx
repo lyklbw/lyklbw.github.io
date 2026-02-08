@@ -165,7 +165,7 @@ export default function Home() {
           <div style={{ textAlign: 'left', flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 'bold', fontSize: '18px', wordBreak: 'break-word' }}>{isZh ? '香港科技大学（广州）' : 'The Hong Kong University of Science and Technology (Guangzhou)'}</div>
             <div style={{ fontSize: '15px', margin: '2px 0', wordBreak: 'break-word' }}>{isZh ? '访问学生 王旭东教授指导' : 'Visiting Student, supervised by Prof. Xudong Wang'}</div>
-            <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '2025.7 - 至今' : 'Jul 2023 - Sep 2023'}</div>
+            <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '2025.7 - 2025.9' : 'Jul. 2025 - Sep. 2025'}</div>
             <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '研究方向：无线人工智能' : 'Research Field: AI for Wireless'}</div>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function Home() {
           <div style={{ textAlign: 'left', flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 'bold', fontSize: '18px', wordBreak: 'break-word' }}>{isZh ? '华中科技大学电信学院' : 'School of Electronic Information and Communications, HUST'}</div>
             <div style={{ fontSize: '15px', margin: '2px 0', wordBreak: 'break-word' }}>{isZh ? '本科研究员 王巍教授指导' : 'Undergraduate Researcher, supervised by Prof. Wei Wang'}</div>
-            <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '2024.4-2025.3' : 'Apr 2024 - Mar 2025'}</div>
+            <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '2024.4-2025.3' : 'Apr. 2024 - Mar. 2025'}</div>
             <div style={{ color: '#888', fontSize: '14px' }}>{isZh ? '研究方向：无线室内定位' : 'Research: Wireless Indoor Positioning'}</div>
           </div>
         </div>

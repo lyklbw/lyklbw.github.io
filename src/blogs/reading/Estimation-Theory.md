@@ -149,7 +149,14 @@ The CRLB provides a lower bound on the variance of any unbiased estimator. If an
 
     Since all of the information is embodied in the observed data and the underlying PDF, the estimation accuracy is determined directly by the PDF. So in general, the more the PDF is influenced by the unknown parameters, the better we should be able to estimate it.
 
-    When the PDF is viewed as a function of the unknown parameter (with fixed x)
+    When the PDF is viewed as a function of the unknown parameter (with fixed x), it is termed the likelihood function.
+    Intuitively, the 'sharpness' of the likelihood function is a measure of how well we can estimate the parameter. To quantify this notion, the sharpness is effectively measured by the negative of <u> the second derivative of the logarithm of the likelihood at its peak.</u>
+
+2. Cramer-Rao Lower Bound
+ 
+    <u>**Theorem: Cramer-Rao Lower Bound - Scalar Parameter**</u>
+
+    It is assumed that the PDF
     
 
 

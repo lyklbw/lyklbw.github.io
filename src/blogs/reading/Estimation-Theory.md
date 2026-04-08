@@ -156,8 +156,30 @@ The CRLB provides a lower bound on the variance of any unbiased estimator. If an
  
     <u>**Theorem: Cramer-Rao Lower Bound - Scalar Parameter**</u>
 
-    It is assumed that the PDF
-    
+    It is assumed that the PDF $p(x;\theta)$ satisfies the following regularity conditions:
+    $$
+    E \left[ \frac{\partial \ln p(\mathbf{x}; \theta)}{\partial \theta} \right] = 0 \quad \text{for all } \theta
+    $$
+
+    where the expectation is taken with respect to the PDF $p(\mathbf{x}; \theta)$.
+
+    Then, for any unbiased estimator $\hat{\theta}$, the variance is bounded must satisfy:
+    $$
+    \text{var}(\hat{\theta}) \geq \frac{1}{-E \left[ \frac{\partial^2 \ln p(\mathbf{x}; \theta)}{\partial \theta^2} \right]}
+    $$
+    where the derivative is evaluated at the true value of $\theta$, and the expectation is taken with respect to the PDF $p(\mathbf{x}; \theta)$.
+    Furthermore, an unbiased estimator $\hat{\theta}$ achieves the CRLB if and only if the following condition holds:
+    $$
+    \frac{\partial \ln p(\mathbf{x}; \theta)}{\partial \theta} = I(\theta)(\hat{\theta} - \theta)
+    $$
+    for some function $g$ and $I$. The estimator, which is MVUE, is $\hat{\theta} = g(x)$, and the minimum variance is $1/I(\theta)$.
+
+    The expectation of the second derivative given by:
+    $$
+    E \left[ \frac{\partial^2 \ln p(\mathbf{x}; \theta)}{\partial \theta^2} \right] = \int \frac{\partial^2 \ln p(\mathbf{x}; \theta)}{\partial \theta^2} p(\mathbf{x}; \theta) \, d\mathbf{x}
+    $$
+    since the second derivative is random variable dependent on $x$. Also the bound will depend on $\theta$ in general. 
+
 
 
 

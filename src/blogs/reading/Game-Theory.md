@@ -46,17 +46,4 @@ simple examples.
     discrete- and continuous-time games, with a fixed or a variable termination time.
 
 ## Lecture 1: Introduction to Game Theory
-
-1. Elements of a game
-    * The players (who makes decision)
-    * The rules (actions)
-    * The information structure (full-information game & partial-information game)
-    * The objectives (player's goal)
-    * One antoher needs to emphasize is the rationality of players.
-    * non-cooperative game
-  
-2. Zero-sum games and non-zero-sum games
-    * Zero-sum games: the gain of one player is the loss of another player.
-    * Non-zero-sum games: the gain of one player is not necessarily the loss of another player.
-  
-
+This lecture uses several examples to introduce the key principles of noncooperative game theory.

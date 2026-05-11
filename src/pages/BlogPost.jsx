@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -7,6 +8,7 @@ import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BlogPost() {
   const { category, slug } = useParams();
+  const { i18n } = useTranslation();
   const [content, setContent] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
@@ -15,16 +17,29 @@ export default function BlogPost() {
   const [tocItems, setTocItems] = useState([]);
 
   useEffect(() => {
-    fetch(`/src/blogs/${category}/${slug}.md`)
-      .then(response => response.text())
-      .then(text => {
-        setContent(text);
-      })
-      .catch(error => {
-        console.error('Error loading markdown file:', error);
-        setContent('# 文件加载失败\n\n抱歉，无法加载此博客文章。');
-      });
-  }, [category, slug]);
+    const preferredLang = i18n.language === 'zh' ? 'zh' : 'en';
+    const fallbackLang = preferredLang === 'en' ? 'zh' : 'en';
+    const candidates = [preferredLang, fallbackLang].map((lang) => `/src/blogs/${category}/${slug}.${lang}.md`);
+
+    const loadContent = async () => {
+      for (const path of candidates) {
+        try {
+          const response = await fetch(path);
+          if (!response.ok) {
+            continue;
+          }
+          const text = await response.text();
+          setContent(text);
+          return;
+        } catch (error) {
+          console.error('Error loading markdown file:', error);
+        }
+      }
+      setContent('# 文件加载失败\n\n抱歉，无法加载此博客文章。');
+    };
+
+    loadContent();
+  }, [category, slug, i18n.language]);
 
   // 使用MathJax渲染LaTeX公式：只加载一次脚本，并在内容变化时对容器重新排版
   useEffect(() => {

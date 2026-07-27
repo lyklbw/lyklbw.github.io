@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const educations = [
   {
-    img: '/images/hust_emblem.jpg',
+    img: '/images/site/hust_emblem.jpg',
     school: '华中科技大学',
     degree: '工学学士',
     major: '通信工程',
@@ -21,7 +21,7 @@ const educations = [
     }
   },
   {
-    img: '/images/ucsb_emblem.png',
+    img: '/images/site/ucsb_emblem.png',
     school: '加州大学圣塔芭芭拉分校',
     degree: '访问学生',
     major: '电子与计算机工程',
@@ -36,7 +36,7 @@ const educations = [
     }
   },
   {
-    img: '/images/rit_avatar.png',
+    img: '/images/site/rit_avatar.png',
     school: '罗切斯特理工学院',
     degree: 'PhD Student',
     major: 'Computing Information and Science',
@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <div className="card" style={{ textAlign: 'center' }}>
       <div className="profile-row">
-        <img src="/images/profile_pic.jpg" alt="avatar" className="avatar-img" style={{ width: 150, height: 150, borderRadius: 6, objectFit: 'cover', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', marginLeft: '2vw' }} />
+        <img src="/images/site/profile_pic.jpg" alt="avatar" className="avatar-img" style={{ width: 150, height: 150, borderRadius: 6, objectFit: 'cover', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', marginLeft: '2vw' }} />
         <div style={{ textAlign: 'left' }}>
           <h1 style={{ margin: '12px 0 8px 0' }} data-section="name">{isZh ? t('name_zh') : t('name_en')}</h1>
           <p style={{ fontSize: '1.1em', margin: '8px 0 16px 0' }}>
@@ -168,7 +168,7 @@ export default function Home() {
           maxWidth: '100%',
           boxSizing: 'border-box'
         }}>
-          <img src="/images/hkust_gz.png" alt="HKUST(GZ)" style={{ 
+          <img src="/images/site/hkust_gz.png" alt="HKUST(GZ)" style={{ 
             width: '78px', 
             height: '78px', 
             objectFit: 'contain', 
@@ -195,7 +195,7 @@ export default function Home() {
           maxWidth: '100%',
           boxSizing: 'border-box'
         }}>
-          <img src="/images/eic.png" alt="HUST EIC" style={{ 
+          <img src="/images/site/eic.png" alt="HUST EIC" style={{ 
             width: '78px', 
             height: '78px', 
             objectFit: 'contain', 
@@ -222,7 +222,7 @@ export default function Home() {
           maxWidth: '100%',
           boxSizing: 'border-box'
         }}>
-          <img src="/images/eic.png" alt="HUST EIC" style={{ 
+          <img src="/images/site/eic.png" alt="HUST EIC" style={{ 
             width: '78px', 
             height: '78px', 
             objectFit: 'contain', 
@@ -262,7 +262,7 @@ export default function Home() {
           maxWidth: '100%',
           boxSizing: 'border-box'
         }}>
-          <img src="/images/rugby.png" alt="Rugby" style={{ 
+          <img src="/images/site/rugby.png" alt="Rugby" style={{ 
             width: '90px', 
             height: '90px', 
             objectFit: 'contain', 

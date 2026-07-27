@@ -1,23 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-// 示例博客数据，增加 date 字段
+// 仅包含【公开】文章。私有文章的元数据不放这里（否则会被打包进公开 JS），
+// 而是存于 private-content/blogs/index.json，仅在本地开发模式经 /private 加载。
 const blogs = [
-  { category: 'tech', slug: 'From-Claude-Code', title: { zh: 'From Claude Code', en: 'From Claude Code' }, date: '2026-05-11', draft: true  },
-  { category: 'reading', slug: 'How-to-Organize-A-Benchmark-Paper', title: { zh: '如何组织一篇Benchmark论文', en: 'How to Organize a Benchmark Paper' }, date: '2026-05-1', draft: true  },
-  { category: 'reading', slug:'ALM-Federated-Learning', title: { zh: '联邦学习与ALM', en: 'Federated Learning with ALM' }, date: '2026-04-27', draft: true  },
-  { category: 'reading', slug: 'Game-Theory', title: { zh: '博弈论', en: 'Game Theory' }, date: '2026-02-09', draft: true  },
-  { category: 'reading', slug: 'Estimation-Theory', title: { zh: '优化估计理论笔记', en: 'Optimization Estimation Theory Notes' }, date: '2026-01-27', draft: true  },
   { category: 'reading', slug: 'Read-DDPM', title: { zh: '扩散模型阅读', en: 'Reading DDPM' }, date: '2025-11-6' },
   { category: 'life', slug: 'rugby', title: { zh: '英式橄榄球回忆', en: 'Rugby Memories'}, date: '2025-12-05' },
   { category: 'reading',slug: 'MU-MIMO', title: { zh: 'MU-MIMO', en: 'MU-MIMO' }, date: '2025-08-27' },
   { category: 'reading',slug: 'Neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
   { category: 'tech', slug: 'Tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
   { category: 'reading', slug: 'Book', title: { zh: '阅读', en: 'Books to be read' }, date: '2025-07-15' },
-  
-  
-  //{ category: 'reading', slug: 'SAIR', title: { zh: '合成孔径干涉仪辐射计笔记', en: 'Synthetic Aperture Interferometry Radiometer Notes' }, date: '2025-12-22' }
 ];
 
 const categories = {
@@ -79,12 +72,24 @@ export default function BlogList() {
   const { i18n } = useTranslation();
   const isZh = i18n.language === 'zh';
   const currentCategory = query.get('category');
-  
-  // 使用useMemo优化过滤逻辑，排除草稿文章
+
+  // 开发模式下加载私有文章列表（来自 private-content，构建时不含此逻辑的数据）
+  const [privateBlogs, setPrivateBlogs] = useState([]);
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    fetch('/private/blogs/index.json')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data) => setPrivateBlogs(Array.isArray(data) ? data : []))
+      .catch(() => {});
+  }, []);
+
   const filtered = useMemo(() => {
-    const published = blogs.filter(b => !b.draft);
-    return currentCategory ? published.filter(b => b.category === currentCategory) : published;
-  }, [currentCategory]);
+    // 生产环境只有公开文章；开发环境额外并入私有文章并按日期倒序
+    const merged = import.meta.env.DEV
+      ? [...blogs, ...privateBlogs].sort((a, b) => (a.date < b.date ? 1 : -1))
+      : blogs;
+    return currentCategory ? merged.filter((b) => b.category === currentCategory) : merged;
+  }, [currentCategory, privateBlogs]);
   
   return (
     <div>

@@ -19,7 +19,14 @@ export default function BlogPost() {
   useEffect(() => {
     const preferredLang = i18n.language === 'zh' ? 'zh' : 'en';
     const fallbackLang = preferredLang === 'en' ? 'zh' : 'en';
-    const candidates = [preferredLang, fallbackLang].map((lang) => `/src/blogs/${category}/${slug}.${lang}.md`);
+    // 开发模式下额外尝试 /private/blogs（私有笔记本地预览）；生产构建只查公开的 /src/blogs
+    const bases = import.meta.env.DEV ? ['/src/blogs', '/private/blogs'] : ['/src/blogs'];
+    const candidates = [];
+    for (const lang of [preferredLang, fallbackLang]) {
+      for (const base of bases) {
+        candidates.push(`${base}/${category}/${slug}.${lang}.md`);
+      }
+    }
 
     const loadContent = async () => {
       for (const path of candidates) {

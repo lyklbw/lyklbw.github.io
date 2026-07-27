@@ -1,3 +1,9 @@
+---
+title_zh: 神经网络接收器
+title_en: Neural Receiver
+date: 2025-08-20
+---
+
 ## Neural_Recevier 
 
 > 本篇文章内基于3GPP release 18 New Topics中的Artificial Intelligence (AI)/Machine Learning (ML)的主题，内容包含此场景下通信理论的部分补充以及AI for Wireless中Neural Receiver的介绍。

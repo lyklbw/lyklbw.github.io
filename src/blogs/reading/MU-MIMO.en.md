@@ -1,3 +1,9 @@
+---
+title_zh: MU-MIMO
+title_en: MU-MIMO
+date: 2025-08-27
+---
+
 # MU-MIMO
 > Learning with questions in mind (given an existing knowledge base)
 > 

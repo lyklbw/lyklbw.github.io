@@ -1,3 +1,9 @@
+---
+title_zh: 扩散模型阅读
+title_en: Reading DDPM
+date: 2025-11-06
+---
+
 ## Read DDPM
 > author: lyk
 > 

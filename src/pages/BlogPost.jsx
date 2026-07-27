@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { stripFrontmatter } from '../lib/frontmatter';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -36,7 +37,13 @@ export default function BlogPost() {
             continue;
           }
           const text = await response.text();
-          setContent(text);
+          // 开发模式下，不存在的 /src/blogs/*.md 会命中 Vite 的 SPA 兜底返回 index.html（状态仍是 200）。
+          // 必须跳过这类 HTML，才能继续尝试 /private/blogs（私有笔记）等后续候选路径。
+          const contentType = response.headers.get('content-type') || '';
+          if (contentType.includes('text/html') || /^\s*<!doctype html/i.test(text)) {
+            continue;
+          }
+          setContent(stripFrontmatter(text));
           return;
         } catch (error) {
           console.error('Error loading markdown file:', error);

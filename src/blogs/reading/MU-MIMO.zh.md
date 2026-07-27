@@ -1,3 +1,9 @@
+---
+title_zh: MU-MIMO
+title_en: MU-MIMO
+date: 2025-08-27
+---
+
 # MU-MIMO
 > 带着问题去学习知识（在已经有一定的知识基础的情况下）
 

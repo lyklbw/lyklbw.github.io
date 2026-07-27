@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import fs from 'fs';
+import { parseFrontmatter } from './src/lib/frontmatter.js';
 
 // 自定义插件：复制markdown文件到dist目录
 function copyMarkdownFiles() {
@@ -87,6 +88,30 @@ function servePrivateContentInDev() {
     '.gif': 'image/gif', '.svg': 'image/svg+xml', '.webp': 'image/webp',
     '.json': 'application/json; charset=utf-8',
   };
+  // 扫描 private-content/blogs 下的 md，读取 frontmatter，动态生成私有文章清单。
+  // 这样加私有文章只需扔一个带 frontmatter 的 md，无需手维护任何清单文件。
+  const buildPrivateIndex = (root) => {
+    const dir = resolve(root, 'blogs');
+    const map = new Map();
+    const walk = (d) => {
+      for (const name of fs.readdirSync(d)) {
+        const fp = resolve(d, name);
+        if (fs.statSync(fp).isDirectory()) { walk(fp); continue; }
+        const m = /\/blogs\/([^/]+)\/([^/]+)\.(zh|en)\.md$/.exec(fp.replace(/\\/g, '/'));
+        if (!m) continue;
+        const [, category, slug] = m;
+        const { data } = parseFrontmatter(fs.readFileSync(fp, 'utf-8'));
+        const key = `${category}/${slug}`;
+        const entry = map.get(key) || { category, slug, date: '', title: { zh: '', en: '' }, private: true };
+        if (data.title_zh) entry.title.zh = data.title_zh;
+        if (data.title_en) entry.title.en = data.title_en;
+        if (data.date) entry.date = data.date;
+        map.set(key, entry);
+      }
+    };
+    if (fs.existsSync(dir)) walk(dir);
+    return [...map.values()];
+  };
   return {
     name: 'serve-private-content-dev',
     apply: 'serve',
@@ -94,6 +119,12 @@ function servePrivateContentInDev() {
       const root = resolve(__dirname, 'private-content');
       server.middlewares.use('/private', (req, res, next) => {
         const rel = decodeURIComponent((req.url || '').split('?')[0]);
+        // 私有文章清单：动态生成，不依赖磁盘上的静态文件
+        if (rel === '/blogs/index.json') {
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
+          res.end(JSON.stringify(buildPrivateIndex(root)));
+          return;
+        }
         const fp = resolve(root, '.' + rel);
         // 防目录穿越：必须落在 private-content 内
         if (!fp.startsWith(root) || !fs.existsSync(fp) || !fs.statSync(fp).isFile()) {

@@ -1,3 +1,9 @@
+---
+title_zh: 英式橄榄球回忆
+title_en: Rugby Memories
+date: 2025-12-05
+---
+
 # Rugby Memories
 
 <p align="center">

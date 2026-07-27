@@ -1,17 +1,35 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { parseFrontmatter } from '../lib/frontmatter';
 
-// 仅包含【公开】文章。私有文章的元数据不放这里（否则会被打包进公开 JS），
-// 而是存于 private-content/blogs/index.json，仅在本地开发模式经 /private 加载。
-const blogs = [
-  { category: 'reading', slug: 'Read-DDPM', title: { zh: '扩散模型阅读', en: 'Reading DDPM' }, date: '2025-11-6' },
-  { category: 'life', slug: 'rugby', title: { zh: '英式橄榄球回忆', en: 'Rugby Memories'}, date: '2025-12-05' },
-  { category: 'reading',slug: 'MU-MIMO', title: { zh: 'MU-MIMO', en: 'MU-MIMO' }, date: '2025-08-27' },
-  { category: 'reading',slug: 'Neural-receiver', title: { zh: '神经网络接收器', en: 'Neural Receiver' }, date: '2025-08-20' },
-  { category: 'tech', slug: 'Tool-init', title: { zh: '工具初始配置', en: 'tool Init' }, date: '2025-07-29' },
-  { category: 'reading', slug: 'Book', title: { zh: '阅读', en: 'Books to be read' }, date: '2025-07-15' },
-];
+// 公开文章列表：构建时自动扫描 src/blogs 下的所有 md，读取顶部 frontmatter 生成。
+// 加新公开文章 = 放一个命名正确、带 frontmatter 的 md 文件即可，无需改这里。
+// 分类(category)取自所在文件夹名；是否公开取决于文件放在 src/blogs 还是 private-content。
+const publicModules = import.meta.glob('/src/blogs/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+function buildList(modules) {
+  const map = new Map();
+  for (const [path, raw] of Object.entries(modules)) {
+    const m = /\/blogs\/([^/]+)\/([^/]+)\.(zh|en)\.md$/.exec(path);
+    if (!m) continue;
+    const [, category, slug] = m;
+    const { data } = parseFrontmatter(raw);
+    const key = `${category}/${slug}`;
+    const entry = map.get(key) || { category, slug, date: '', title: { zh: '', en: '' } };
+    if (data.title_zh) entry.title.zh = data.title_zh;
+    if (data.title_en) entry.title.en = data.title_en;
+    if (data.date) entry.date = data.date;
+    map.set(key, entry);
+  }
+  return [...map.values()];
+}
+
+const blogs = buildList(publicModules);
 
 const categories = {
   tech: { zh: '技术', en: 'Tech' },
@@ -84,10 +102,9 @@ export default function BlogList() {
   }, []);
 
   const filtered = useMemo(() => {
-    // 生产环境只有公开文章；开发环境额外并入私有文章并按日期倒序
-    const merged = import.meta.env.DEV
-      ? [...blogs, ...privateBlogs].sort((a, b) => (a.date < b.date ? 1 : -1))
-      : blogs;
+    // 生产环境只有公开文章；开发环境额外并入私有文章。统一按日期倒序。
+    const merged = (import.meta.env.DEV ? [...blogs, ...privateBlogs] : [...blogs])
+      .sort((a, b) => (a.date < b.date ? 1 : -1));
     return currentCategory ? merged.filter((b) => b.category === currentCategory) : merged;
   }, [currentCategory, privateBlogs]);
   
@@ -154,7 +171,7 @@ export default function BlogList() {
                   e.target.style.backgroundColor = 'transparent';
                 }}
               >
-                {isZh ? blog.title.zh : blog.title.en}
+                {isZh ? (blog.title.zh || blog.title.en) : (blog.title.en || blog.title.zh)}
               </Link>
             </div>
             <span style={styles.dateText}>{blog.date}</span>

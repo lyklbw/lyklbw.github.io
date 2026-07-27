@@ -41,7 +41,7 @@
 图片补充：
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">DMRS图解</span>
   </div>
 </div>
@@ -85,7 +85,7 @@ configurations are only differentiated in terms of how many OFDM symbols they ut
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx4.png" style="width: 700px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx4.png" style="width: 700px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">DeepRx's simulator architecture</span>
   </div>
 </div>
@@ -134,7 +134,7 @@ $$
 DeepRx在三位数组上运行，其构建情况如下图：
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx5.png" style="width: 400px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx5.png" style="width: 400px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">DeepRx的输入结构</span>
   </div>
 </div>
@@ -148,11 +148,11 @@ DeepRx在三位数组上运行，其构建情况如下图：
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx6.png" style="width: 350px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx6.png" style="width: 350px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">比特映射机制示意图</span>
   </div>
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx7.png" style="width: 200px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx7.png" style="width: 200px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">比特屏蔽机制示意图</span>
   </div>
 </div>
@@ -265,7 +265,7 @@ $$
 下面的算法实现了下图的神经接收机，该接收机对整个时隙的数据进行处理，可一次性完成所有层传输比特的估计。
 <div style="display: flex; justify-content: center; align-items: flex-start; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx8.png" style="width: 400px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx8.png" style="width: 400px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">Neural MU-MIMO Receiver 架构图</span>
   </div>
 </div>

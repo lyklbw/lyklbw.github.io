@@ -44,7 +44,7 @@ There are many implementations available online, so I won't waste space here. It
 Image Supplementary:
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx3.png" style="width: 700px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">DMRS Illustration</span>
   </div>
 </div>
@@ -90,7 +90,7 @@ The main contributions and work of this paper:
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx4.png" style="width: 700px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx4.png" style="width: 700px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">DeepRx's simulator architecture</span>
   </div>
 </div>
@@ -139,7 +139,7 @@ The main design principles are the following two points:
 DeepRx operates on 3D arrays; its construction is illustrated in the figure below:
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx5.png" style="width: 400px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx5.png" style="width: 400px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">Input structure of DeepRx</span>
   </div>
 </div>
@@ -153,11 +153,11 @@ Since the four higher-order constellation points in a constellation diagram can 
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 32px; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx6.png" style="width: 350px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx6.png" style="width: 350px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">Bit mapping mechanism illustration</span>
   </div>
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx7.png" style="width: 200px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx7.png" style="width: 200px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">Bit masking mechanism illustration</span>
   </div>
 </div>
@@ -270,7 +270,7 @@ Of course, DMRS pilot resources, CP, and the like also need to be allocated, and
 The algorithm below implements the neural receiver shown in the following figure. This receiver processes the data of the entire slot and can complete the bit estimation for all layer transmissions at once.
 <div style="display: flex; justify-content: center; align-items: flex-start; margin: 16px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="/images/nr_DeepRx8.png" style="width: 400px; display: block; margin: 0 auto;" />
+    <img src="/images/blog/nr_DeepRx8.png" style="width: 400px; display: block; margin: 0 auto;" />
     <span style="display: block; text-align: center; color: #888;">Neural MU-MIMO Receiver Architecture Diagram</span>
   </div>
 </div>

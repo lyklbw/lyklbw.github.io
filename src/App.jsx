@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Home from './pages/Home';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
+import VisitorMap from './components/VisitorMap';
 import './styles/global.css';
 
 const blogMarkdownFiles = import.meta.glob('./blogs/**/*.md');
@@ -83,6 +84,7 @@ function App() {
         </div>
         stay hungry, stay foolish <br />
         日拱一卒，功不唐捐
+        <VisitorMap />
       </footer>
     </div>
   );

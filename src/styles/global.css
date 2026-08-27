@@ -409,5 +409,40 @@ nav a:hover, a:hover {
     margin: 8px auto !important;
     border-radius: 4px !important;
   }
-} 
+}
+
+/* 访客地图（MapMyVisitors） */
+.visitor-map-card {
+  width: min(280px, 90vw);
+  margin: 8px auto 0;
+  background: #fffbe6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.visitor-map-caption {
+  font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+  font-size: 12px;
+  color: #5F4B3B;
+  opacity: 0.75;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.visitor-map-widget {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  line-height: 0;
+}
+
+@media (max-width: 480px) {
+  .visitor-map-card {
+    width: min(240px, 88vw);
+    padding: 10px;
+  }
+}
+
 
